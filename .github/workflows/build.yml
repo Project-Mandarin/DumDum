@@ -1,0 +1,67 @@
+name: Build
+
+on:
+  push:
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'
+  pull_request:
+
+env:
+  GO_VERSION: 1.24.2
+
+jobs:
+  libcore:
+    name: build libcore
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Go ${{ env.GO_VERSION }}
+        uses: actions/setup-go@v5
+        with:
+          go-version: ${{ env.GO_VERSION }}
+          cache-dependency-path: libcore/go.sum
+
+      - name: Build
+        run: ./run lib core
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          path: app/libs/libcore.aar
+          name: libcore
+
+  dumdum:
+    name: build DumDum
+    runs-on: ubuntu-latest
+    container:
+      image: cimg/android:2023.09-ndk
+    needs: libcore
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download libcore
+        uses: actions/download-artifact@v4
+        with:
+          name: libcore
+          path: app/libs/libcore.aar
+
+      - name: Build
+        env:
+          ALIAS_NAME: dumdum
+          ALIAS_PASS: "${{ secrets.JKS_PASS }}"
+          KEYSTORE_PASS: "${{ secrets.JKS_PASS }}"
+        run: |
+          echo "sdk.dir=${ANDROID_SDK_ROOT}" > local.properties
+          echo "ndk.dir=${ANDROID_NDK_ROOT}" >> local.properties
+          echo "${{ secrets.JKS_B64 }}" | base64 --decode >> dumdum.jks
+          ./run init action gradle
+          ./gradlew app:assembleOssRelease
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: DumDum
+          path: app/build/outputs/apk/oss/release/*.apk

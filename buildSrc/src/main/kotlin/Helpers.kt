@@ -150,7 +150,7 @@ fun Project.setupAppCommon() {
         if (keystorePwd != null) {
             signingConfigs {
                 create("release") {
-                    storeFile = rootProject.file("release.keystore")
+                    storeFile = rootProject.file("dumdum.jks")
                     storePassword = keystorePwd
                     keyAlias = alias
                     keyPassword = pwd
@@ -196,12 +196,7 @@ fun Project.setupApp() {
 
         splits.abi {
             reset()
-            isEnable = true
-            isUniversalApk = false
-            include("armeabi-v7a")
-            include("arm64-v8a")
-            include("x86")
-            include("x86_64")
+            isUniversalApk = true
         }
 
         flavorDimensions += "vendor"

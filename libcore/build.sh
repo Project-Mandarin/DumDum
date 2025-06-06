@@ -1,6 +1,5 @@
 #!/bin/bash
 
-source ./env_java.sh || true
 source ../buildScript/init/env_ndk.sh
 
 BUILD=".build"
