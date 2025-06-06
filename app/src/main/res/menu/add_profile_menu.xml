@@ -36,12 +36,6 @@
             <item android:title="@string/add_profile_methods_manual_settings" android:visible="false">
                 <menu>
                     <item
-                        android:id="@+id/action_new_socks"
-                        android:title="@string/action_socks" />
-                    <item
-                        android:id="@+id/action_new_http"
-                        android:title="@string/action_http" />c
-                    <item
                         android:id="@+id/action_new_ss"
                         android:title="@string/action_shadowsocks" />
                     <item

@@ -12,9 +12,6 @@
         android:visible="false">
         <menu>
             <item
-                android:id="@+id/action_standard_qr"
-                android:title="@string/standard" />
-            <item
                 android:id="@+id/action_universal_qr"
                 android:title="SN Link" />
         </menu>
@@ -24,9 +21,6 @@
         android:title="@string/action_export_clipboard"
         android:visible="false">
         <menu>
-            <item
-                android:id="@+id/action_standard_clipboard"
-                android:title="@string/standard" />
             <item
                 android:id="@+id/action_universal_clipboard"
                 android:title="SN Link" />
