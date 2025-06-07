@@ -156,13 +156,13 @@
 
     <PreferenceCategory app:title="@string/cag_dns">
         <EditTextPreference
-            app:defaultValue="tls://dns.google"
+            app:defaultValue="tls://8.8.4.4\ntls://8.8.8.8"
             app:icon="@drawable/ic_action_dns"
             app:key="remoteDns"
             app:title="@string/remote_dns"
             app:useSimpleSummaryProvider="true" />
         <moe.matsuri.nb4a.ui.SimpleMenuPreference
-            app:defaultValue="auto"
+            app:defaultValue="ipv4_only"
             app:entries="@array/dns_network_select"
             app:entryValues="@array/dns_network_select"
             app:key="domain_strategy_for_remote"
@@ -177,7 +177,7 @@
             app:useSimpleSummaryProvider="true"
             app:isPreferenceVisible="false" />
         <moe.matsuri.nb4a.ui.SimpleMenuPreference
-            app:defaultValue="auto"
+            app:defaultValue="ipv4_only"
             app:entries="@array/dns_network_select"
             app:entryValues="@array/dns_network_select"
             app:key="domain_strategy_for_direct"

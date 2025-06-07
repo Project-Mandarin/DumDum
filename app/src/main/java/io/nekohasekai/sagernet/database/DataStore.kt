@@ -108,7 +108,7 @@ object DataStore : OnPreferenceDataStoreChangeListener {
     var speedInterval by configurationStore.stringToInt(Key.SPEED_INTERVAL) { 1000 }
     var showGroupInNotification by configurationStore.boolean("showGroupInNotification")
 
-    var remoteDns by configurationStore.string(Key.REMOTE_DNS) { "tls://dns.google" }
+    var remoteDns by configurationStore.string(Key.REMOTE_DNS) { "tls://8.8.4.4\ntls://8.8.8.8" }
     var directDns by configurationStore.string(Key.DIRECT_DNS) { "local" }
     var enableDnsRouting by configurationStore.boolean(Key.ENABLE_DNS_ROUTING) { false }
     var enableFakeDns by configurationStore.boolean(Key.ENABLE_FAKEDNS)
