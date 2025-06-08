@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory app:title="@string/advanced_settings">
+        <moe.matsuri.nb4a.ui.MTUPreference
+            app:defaultValue="9000"
+            app:entries="@array/mtu_select"
+            app:entryValues="@array/mtu_select" 
+            app:icon="@drawable/baseline_public_24"
+            app:key="mtu"
+            app:title="@string/mtu" />
+
+        <moe.matsuri.nb4a.ui.SimpleMenuPreference
+            app:defaultValue="2"
+            app:entries="@array/tun_implementation"
+            app:entryValues="@array/int_array_3"
+            app:icon="@drawable/ic_baseline_flip_camera_android_24"
+            app:key="tunImplementation"
+            app:title="@string/tun_implementation"
+            app:useSimpleSummaryProvider="true" />
+
+        <moe.matsuri.nb4a.ui.SimpleMenuPreference
+            app:defaultValue="vpn"
+            app:entries="@array/service_modes"
+            app:entryValues="@array/service_mode_values"
+            app:icon="@drawable/ic_device_developer_mode"
+            app:key="serviceMode"
+            app:title="@string/service_mode"
+            app:useSimpleSummaryProvider="true" />
+
+        <moe.matsuri.nb4a.ui.LongClickListPreference
+            app:defaultValue="0"
+            app:entries="@array/log_level"
+            app:entryValues="@array/int_array_5"
+            app:icon="@drawable/ic_baseline_bug_report_24"
+            app:key="logLevel"
+            app:title="@string/log_level"
+            app:useSimpleSummaryProvider="true" />
+
+        <SwitchPreference
+            app:icon="@drawable/baseline_developer_board_24"
+            app:key="acquireWakeLock"
+            app:summary="@string/acquire_wake_lock_summary"
+            app:title="@string/acquire_wake_lock" />
+
+        <moe.matsuri.nb4a.ui.SimpleMenuPreference
+            app:defaultValue="1"
+            app:entries="@array/traffic_sniffing_values"
+            app:entryValues="@array/int_array_3"
+            app:icon="@drawable/ic_baseline_manage_search_24"
+            app:key="trafficSniffing"
+            app:title="@string/traffic_sniffing"
+            app:useSimpleSummaryProvider="true" />
+
+        <SwitchPreference
+            app:icon="@drawable/ic_baseline_legend_toggle_24"
+            app:key="bypassLan"
+            app:title="@string/route_opt_bypass_lan" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen> 

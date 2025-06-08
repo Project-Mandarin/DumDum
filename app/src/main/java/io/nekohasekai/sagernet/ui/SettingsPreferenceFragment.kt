@@ -59,51 +59,18 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat() {
             true
         }
         val mixedPort = findPreference<EditTextPreference>(Key.MIXED_PORT)!!
-        val serviceMode = findPreference<Preference>(Key.SERVICE_MODE)!!
         val allowAccess = findPreference<Preference>(Key.ALLOW_ACCESS)!!
         val appendHttpProxy = findPreference<SwitchPreference>(Key.APPEND_HTTP_PROXY)!!
 
         val showDirectSpeed = findPreference<SwitchPreference>(Key.SHOW_DIRECT_SPEED)!!
         val ipv6Mode = findPreference<Preference>(Key.IPV6_MODE)!!
-        val trafficSniffing = findPreference<Preference>(Key.TRAFFIC_SNIFFING)!!
 
-        val bypassLan = findPreference<SwitchPreference>(Key.BYPASS_LAN)!!
         val bypassLanInCore = findPreference<SwitchPreference>(Key.BYPASS_LAN_IN_CORE)!!
 
         val remoteDns = findPreference<EditTextPreference>(Key.REMOTE_DNS)!!
         val directDns = findPreference<EditTextPreference>(Key.DIRECT_DNS)!!
         val enableDnsRouting = findPreference<SwitchPreference>(Key.ENABLE_DNS_ROUTING)!!
         val enableFakeDns = findPreference<SwitchPreference>(Key.ENABLE_FAKEDNS)!!
-
-        val logLevel = findPreference<LongClickListPreference>(Key.LOG_LEVEL)!!
-        val mtu = findPreference<MTUPreference>(Key.MTU)!!
-
-        logLevel.dialogLayoutResource = R.layout.layout_loglevel_help
-        logLevel.setOnPreferenceChangeListener { _, _ ->
-            needRestart()
-            true
-        }
-        logLevel.setOnLongClickListener {
-            if (context == null) return@setOnLongClickListener true
-
-            val view = EditText(context).apply {
-                inputType = EditorInfo.TYPE_CLASS_NUMBER
-                var size = DataStore.logBufSize
-                if (size == 0) size = 50
-                setText(size.toString())
-            }
-
-            MaterialAlertDialogBuilder(requireContext()).setTitle("Log buffer size (kb)")
-                .setView(view)
-                .setPositiveButton(android.R.string.ok) { _, _ ->
-                    DataStore.logBufSize = view.text.toString().toInt()
-                    if (DataStore.logBufSize <= 0) DataStore.logBufSize = 50
-                    needRestart()
-                }
-                .setNegativeButton(android.R.string.cancel, null)
-                .show()
-            true
-        }
 
         mixedPort.setOnBindEditTextListener(EditTextPreferenceModifiers.Port)
 
@@ -118,14 +85,17 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat() {
             newValue
         }
 
-        serviceMode.setOnPreferenceChangeListener { _, _ ->
-            if (DataStore.serviceState.started) SagerNet.stopService()
+        val profileTrafficStatistics =
+            findPreference<SwitchPreference>(Key.PROFILE_TRAFFIC_STATISTICS)!!
+        val speedInterval = findPreference<SimpleMenuPreference>(Key.SPEED_INTERVAL)!!
+        profileTrafficStatistics.isEnabled = speedInterval.value.toString() != "0"
+        speedInterval.setOnPreferenceChangeListener { _, newValue ->
+            profileTrafficStatistics.isEnabled = newValue.toString() != "0"
+            needReload()
             true
         }
 
-        val tunImplementation = findPreference<SimpleMenuPreference>(Key.TUN_IMPLEMENTATION)!!
         val resolveDestination = findPreference<SwitchPreference>(Key.RESOLVE_DESTINATION)!!
-        val acquireWakeLock = findPreference<SwitchPreference>(Key.ACQUIRE_WAKE_LOCK)!!
         val enableClashAPI = findPreference<SwitchPreference>(Key.ENABLE_CLASH_API)!!
         enableClashAPI.setOnPreferenceChangeListener { _, newValue ->
             (activity as MainActivity?)?.refreshNavMenu(newValue as Boolean)
@@ -136,22 +106,22 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat() {
         mixedPort.onPreferenceChangeListener = reloadListener
         appendHttpProxy.onPreferenceChangeListener = reloadListener
         showDirectSpeed.onPreferenceChangeListener = reloadListener
-        trafficSniffing.onPreferenceChangeListener = reloadListener
-        bypassLan.onPreferenceChangeListener = reloadListener
         bypassLanInCore.onPreferenceChangeListener = reloadListener
-        mtu.onPreferenceChangeListener = reloadListener
-
+        enableDnsRouting.onPreferenceChangeListener = reloadListener
         enableFakeDns.onPreferenceChangeListener = reloadListener
         remoteDns.onPreferenceChangeListener = reloadListener
         directDns.onPreferenceChangeListener = reloadListener
-        enableDnsRouting.onPreferenceChangeListener = reloadListener
 
         ipv6Mode.onPreferenceChangeListener = reloadListener
         allowAccess.onPreferenceChangeListener = reloadListener
 
         resolveDestination.onPreferenceChangeListener = reloadListener
-        tunImplementation.onPreferenceChangeListener = reloadListener
-        acquireWakeLock.onPreferenceChangeListener = reloadListener
+
+        val advancedSettings = findPreference<Preference>("advancedSettings")!!
+        advancedSettings.setOnPreferenceClickListener {
+            startActivity(Intent(requireContext(), AdvancedSettingsActivity::class.java))
+            true
+        }
 
     }
 
