@@ -306,6 +306,9 @@ class MainActivity : ThemedActivity(),
     fun displayFragment(fragment: ToolbarFragment) {
         if (fragment is ConfigurationFragment) {
             binding.stats.allowShow = true
+            if (DataStore.serviceState.connected) {
+                binding.stats.performShow()
+            }
             binding.fab.show()
         } else if (!DataStore.showBottomBar) {
             binding.stats.allowShow = false

@@ -86,7 +86,7 @@ class StatsBar @JvmOverloads constructor(
             delay(100L)
             activity.whenStarted { what() }
         }
-        if ((state == BaseService.State.Connected).also { hideOnScroll = it }) {
+        if (state == BaseService.State.Connected) {
             postWhenStarted {
                 if (allowShow) performShow()
                 setStatus(app.getText(R.string.vpn_connected))
