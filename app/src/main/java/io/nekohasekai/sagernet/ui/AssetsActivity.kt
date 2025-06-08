@@ -155,8 +155,8 @@ class AssetsActivity : ThemedActivity() {
             val files = filesDir.listFiles()
                 ?.filter { it.isFile && it.name.endsWith(".db") && it.name !in assetNames }
             assets.clear()
-            assets.add(File(filesDir, "geoip.db"))
-            assets.add(File(filesDir, "geosite.db"))
+            // assets.add(File(filesDir, "geoip.db"))
+            // assets.add(File(filesDir, "geosite.db"))
             if (files != null) assets.addAll(files)
 
             layout.refreshLayout.post {

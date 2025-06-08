@@ -78,9 +78,9 @@ func InitCore(process, cachePath, internalAssets, externalAssets string,
 		}
 
 		// bg
-		if isBgProcess {
-			extractAssets()
-		}
+		// if isBgProcess {
+		//	extractAssets()
+		// }
 	}()
 }
 
