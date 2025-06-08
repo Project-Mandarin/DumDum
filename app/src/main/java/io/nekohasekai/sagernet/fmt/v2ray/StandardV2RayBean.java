@@ -95,7 +95,7 @@ public abstract class StandardV2RayBean extends AbstractBean {
         if (JavaUtil.isNullOrBlank(utlsFingerprint)) utlsFingerprint = "";
 
         if (wsMaxEarlyData == null) wsMaxEarlyData = 0;
-        if (allowInsecure == null) allowInsecure = true;
+        if (allowInsecure == null) allowInsecure = false;
         if (packetEncoding == null) packetEncoding = 0;
 
         if (realityPubKey == null) realityPubKey = "";
