@@ -80,4 +80,4 @@ class AdvancedSettingsFragment : PreferenceFragmentCompat() {
         super.onViewCreated(view, savedInstanceState)
         ViewCompat.setOnApplyWindowInsetsListener(listView, ListListener)
     }
-} 
+}
