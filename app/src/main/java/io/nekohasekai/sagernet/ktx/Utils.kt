@@ -34,6 +34,7 @@ import io.nekohasekai.sagernet.bg.Executable
 import io.nekohasekai.sagernet.database.DataStore
 import io.nekohasekai.sagernet.database.SagerDatabase
 import io.nekohasekai.sagernet.database.preference.PublicDatabase
+import io.nekohasekai.sagernet.ui.AdvancedSettingsActivity
 import io.nekohasekai.sagernet.ui.MainActivity
 import io.nekohasekai.sagernet.ui.ThemedActivity
 import kotlinx.coroutines.Dispatchers
@@ -212,9 +213,12 @@ fun View.crossFadeFrom(other: View) {
     }).duration = shortAnimTime
 }
 
-
-fun Fragment.snackbar(textId: Int) = (requireActivity() as MainActivity).snackbar(textId)
-fun Fragment.snackbar(text: CharSequence) = (requireActivity() as MainActivity).snackbar(text)
+fun Fragment.snackbar(textId: Int) = (requireActivity() as ThemedActivity).snackbar(textId)
+fun Fragment.snackbar(text: CharSequence) = try {
+    (requireActivity() as MainActivity).snackbar(text)
+} catch (e: Exception) {
+    (requireActivity() as AdvancedSettingsActivity).snackbar(text)
+}
 
 fun ThemedActivity.startFilesForResult(
     launcher: ActivityResultLauncher<String>, input: String

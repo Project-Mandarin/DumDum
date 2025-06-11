@@ -3,6 +3,7 @@ package io.nekohasekai.sagernet.ui
 import android.os.Bundle
 import io.nekohasekai.sagernet.R
 import io.nekohasekai.sagernet.databinding.LayoutAdvancedSettingsActivityBinding
+import com.google.android.material.snackbar.Snackbar
 
 class AdvancedSettingsActivity : ThemedActivity() {
     lateinit var binding: LayoutAdvancedSettingsActivityBinding
@@ -14,7 +15,7 @@ class AdvancedSettingsActivity : ThemedActivity() {
 
         setSupportActionBar(findViewById(R.id.toolbar))
         supportActionBar?.apply {
-            setTitle(R.string.advanced_settings)
+            setTitle(R.string.advanced)
             setDisplayHomeAsUpEnabled(true)
             setHomeAsUpIndicator(R.drawable.ic_navigation_close)
         }
@@ -30,4 +31,9 @@ class AdvancedSettingsActivity : ThemedActivity() {
         finish()
         return true
     }
-} 
+
+    override fun snackbarInternal(text: CharSequence): Snackbar {
+        return Snackbar.make(binding.coordinator, text, Snackbar.LENGTH_LONG)
+    }
+
+}
