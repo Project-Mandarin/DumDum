@@ -72,7 +72,8 @@
             app:title="@string/proxied_apps" />
         <SwitchPreference
             app:key="bypassLanInCore"
-            app:title="@string/bypass_lan_in_core" />
+            app:title="@string/bypass_lan_in_core"
+            app:isPreferenceVisible="false" />
         <SwitchPreference
             app:icon="@drawable/baseline_wrap_text_24"
             app:key="resolveDestination"
@@ -101,13 +102,13 @@
 
     <PreferenceCategory app:title="@string/cag_dns">
         <EditTextPreference
-            app:defaultValue="tls://dns.google"
+            app:defaultValue="tls://8.8.4.4\ntls://8.8.8.8"
             app:icon="@drawable/ic_action_dns"
             app:key="remoteDns"
             app:title="@string/remote_dns"
             app:useSimpleSummaryProvider="true" />
         <moe.matsuri.nb4a.ui.SimpleMenuPreference
-            app:defaultValue="auto"
+            app:defaultValue="ipv4_only"
             app:entries="@array/dns_network_select"
             app:entryValues="@array/dns_network_select"
             app:key="domain_strategy_for_remote"
@@ -115,14 +116,14 @@
             app:useSimpleSummaryProvider="true"
             app:isPreferenceVisible="false" />
         <EditTextPreference
-            app:defaultValue="https://223.5.5.5/dns-query"
+            app:defaultValue="local"
             app:icon="@drawable/ic_action_dns"
             app:key="directDns"
             app:title="@string/direct_dns"
             app:useSimpleSummaryProvider="true"
             app:isPreferenceVisible="false" />
         <moe.matsuri.nb4a.ui.SimpleMenuPreference
-            app:defaultValue="auto"
+            app:defaultValue="ipv4_only"
             app:entries="@array/dns_network_select"
             app:entryValues="@array/dns_network_select"
             app:key="domain_strategy_for_direct"
@@ -130,7 +131,7 @@
             app:useSimpleSummaryProvider="true"
             app:isPreferenceVisible="false" />
         <moe.matsuri.nb4a.ui.SimpleMenuPreference
-            app:defaultValue="auto"
+            app:defaultValue="ipv4_only"
             app:entries="@array/dns_network_select"
             app:entryValues="@array/dns_network_select"
             app:key="domain_strategy_for_server"
@@ -171,12 +172,6 @@
     </PreferenceCategory>
 
     <PreferenceCategory app:title="@string/cag_misc" app:isPreferenceVisible="false">
-        <moe.matsuri.nb4a.ui.UrlTestPreference
-            app:defaultValue="http://alidns.com"
-            app:icon="@drawable/ic_baseline_cast_connected_24"
-            app:key="connectionTestURL"
-            app:title="@string/connection_test_url"
-            app:useSimpleSummaryProvider="true" />
         <SwitchPreference
             app:icon="@drawable/baseline_construction_24"
             app:key="enableClashAPI"
@@ -193,10 +188,6 @@
             app:title="@string/wake_reset_connections"
             app:useSimpleSummaryProvider="true" />
         <SwitchPreference
-            app:icon="@drawable/ic_action_lock_open"
-            app:key="globalAllowInsecure"
-            app:title="@string/global_allow_insecure" />
-        <SwitchPreference
             app:key="allowInsecureOnRequest"
             app:title="@string/allow_insecure_on_request_sum" />
         <moe.matsuri.nb4a.ui.SimpleMenuPreference
@@ -211,9 +202,10 @@
             app:title="@string/show_bottom_bar" />
     </PreferenceCategory>
 
-    <Preference
-        app:icon="@drawable/ic_device_developer_mode"
-        app:key="advancedSettings"
-        app:title="@string/advanced_settings" />
-
+    <PreferenceCategory app:title="@string/advanced_settings">
+        <Preference
+            app:icon="@drawable/ic_device_developer_mode"
+            app:key="advancedSettings"
+            app:title="@string/advanced" />
+    </PreferenceCategory>
 </PreferenceScreen>
