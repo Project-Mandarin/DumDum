@@ -4,11 +4,8 @@ import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.View
-import android.view.inputmethod.EditorInfo
-import android.widget.EditText
 import androidx.core.app.ActivityCompat
 import androidx.preference.*
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import io.nekohasekai.sagernet.Key
 import io.nekohasekai.sagernet.R
 import io.nekohasekai.sagernet.SagerNet
@@ -85,16 +82,6 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat() {
             newValue
         }
 
-        val profileTrafficStatistics =
-            findPreference<SwitchPreference>(Key.PROFILE_TRAFFIC_STATISTICS)!!
-        val speedInterval = findPreference<SimpleMenuPreference>(Key.SPEED_INTERVAL)!!
-        profileTrafficStatistics.isEnabled = speedInterval.value.toString() != "0"
-        speedInterval.setOnPreferenceChangeListener { _, newValue ->
-            profileTrafficStatistics.isEnabled = newValue.toString() != "0"
-            needReload()
-            true
-        }
-
         val resolveDestination = findPreference<SwitchPreference>(Key.RESOLVE_DESTINATION)!!
         val enableClashAPI = findPreference<SwitchPreference>(Key.ENABLE_CLASH_API)!!
         enableClashAPI.setOnPreferenceChangeListener { _, newValue ->
@@ -107,10 +94,11 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat() {
         appendHttpProxy.onPreferenceChangeListener = reloadListener
         showDirectSpeed.onPreferenceChangeListener = reloadListener
         bypassLanInCore.onPreferenceChangeListener = reloadListener
-        enableDnsRouting.onPreferenceChangeListener = reloadListener
+
         enableFakeDns.onPreferenceChangeListener = reloadListener
         remoteDns.onPreferenceChangeListener = reloadListener
         directDns.onPreferenceChangeListener = reloadListener
+        enableDnsRouting.onPreferenceChangeListener = reloadListener
 
         ipv6Mode.onPreferenceChangeListener = reloadListener
         allowAccess.onPreferenceChangeListener = reloadListener
