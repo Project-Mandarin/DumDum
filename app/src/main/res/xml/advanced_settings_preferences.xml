@@ -29,7 +29,7 @@
     <PreferenceCategory app:title="@string/connection">
         <SwitchPreference
             app:defaultValue="true"
-            app:icon="@drawable/ic_baseline_legend_toggle_24"
+            app:icon="@drawable/ic_baseline_shuffle_24"
             app:key="bypassLan"
             app:title="@string/route_opt_bypass_lan" />
         <moe.matsuri.nb4a.ui.UrlTestPreference
