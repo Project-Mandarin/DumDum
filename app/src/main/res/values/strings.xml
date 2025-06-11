@@ -281,8 +281,9 @@
     <string name="deduplication">Deduplication</string>
     <string name="donate">Donate</string>
     <string name="donate_info">I love money</string>
-    <string name="ignore_battery_optimizations">Ignore Battery Optimizations</string>
-    <string name="ignore_battery_optimizations_sum">Remove some restrictions</string>
+    <string name="ignore_battery_optimizations">Disable Battery Optimizations</string>
+    <string name="ignore_battery_optimizations_sum">Allow battery usage in background without restrictions</string>
+    <string name="ignore_battery_optimizations_disabled">Battery usage is unrestricted</string>c
     <!-- plugin -->
     <string name="plugin">Plugin</string>
     <string name="plugin_configure">Configure…</string>

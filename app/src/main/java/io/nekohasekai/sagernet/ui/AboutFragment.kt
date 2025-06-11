@@ -1,18 +1,11 @@
 package io.nekohasekai.sagernet.ui
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
-import android.os.PowerManager
 import android.provider.Settings
-import android.text.util.Linkify
 import android.view.View
-import androidx.activity.result.component1
-import androidx.activity.result.component2
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.view.ViewCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.danielstone.materialaboutlibrary.MaterialAboutFragment
@@ -45,16 +38,6 @@ class AboutFragment : ToolbarFragment(R.layout.layout_about) {
     }
 
     class AboutContent : MaterialAboutFragment() {
-
-        val requestIgnoreBatteryOptimizations = registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult()
-        ) { (resultCode, _) ->
-            if (resultCode == Activity.RESULT_OK) {
-                parentFragmentManager.beginTransaction()
-                    .replace(R.id.about_fragment_holder, AboutContent())
-                    .commitAllowingStateLoss()
-            }
-        }
 
         override fun getMaterialAboutList(activityContext: Context): MaterialAboutList {
 
@@ -139,3 +122,4 @@ class AboutFragment : ToolbarFragment(R.layout.layout_about) {
     }
 
 }
+

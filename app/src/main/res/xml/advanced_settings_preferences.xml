@@ -8,6 +8,11 @@
             app:key="acquireWakeLock"
             app:summary="@string/acquire_wake_lock_summary"
             app:title="@string/acquire_wake_lock" />
+        <Preference
+            app:key="batteryOptimizations"
+            app:icon="@drawable/ic_baseline_running_with_errors_24"
+            app:title="@string/ignore_battery_optimizations"
+            app:summary="@string/ignore_battery_optimizations_sum"/>
         <moe.matsuri.nb4a.ui.SimpleMenuPreference
             app:defaultValue="vpn"
             app:entries="@array/service_modes"
