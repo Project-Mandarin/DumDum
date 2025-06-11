@@ -163,7 +163,7 @@
     <string name="route_opt_block_analysis">Block analysis</string>
     <string name="route_opt_block_quic">Block QUIC</string>
     <string name="domain_strategy">Domain Resolution Strategy</string>
-    <string name="traffic_sniffing">Enable Traffic Sniffing</string>
+    <string name="traffic_sniffing">Traffic Sniffing</string>
     <string name="enable_mux">Enable Multiplexer</string>
     <string name="mux_sum">Mux is designed to reduce TCP handshake latency, not to increase
         connection throughput. Using Mux to watch videos, download or speed test is usually counter
@@ -281,7 +281,7 @@
     <string name="deduplication">Deduplication</string>
     <string name="donate">Donate</string>
     <string name="donate_info">I love money</string>
-    <string name="ignore_battery_optimizations">Ignore battery optimizations</string>
+    <string name="ignore_battery_optimizations">Ignore Battery Optimizations</string>
     <string name="ignore_battery_optimizations_sum">Remove some restrictions</string>
     <!-- plugin -->
     <string name="plugin">Plugin</string>
@@ -529,7 +529,7 @@
     <string name="xtls_flow">Flow (VLESS Sub-protocol)</string>
     <string name="ads">Ads</string>
     <string name="bypass_lan_in_core">Bypass LAN in Core</string>
-    <string name="need_restart">Restart APP to apply changes</string>
+    <string name="need_restart">Restart App to apply changes</string>
     <string name="use_selector">Use selector</string>
     <string name="front_proxy">Front proxy</string>
     <string name="landing_proxy">Landing Proxy</string>
@@ -560,10 +560,15 @@
     <string name="group_not_subscription">Group type is not subscription</string>
     <string name="allow_insecure_on_request_sum">Disable certificate checking when updating
         subscriptions</string>
-    <string name="global_allow_insecure">Always allow insecure</string>
+    <string name="global_allow_insecure">Ignore Proxy SSL Certificate</string>
     <string name="mux_preference">Mulitplex</string>
     <string name="padding">Padding</string>
     <string name="network_change_reset_connections">Reset outbound connections when network changes</string>
     <string name="wake_reset_connections">Reset outbound connections when device wake from sleep</string>
     <string name="add_profile_import">Import&#8230;</string>
+    <string name="advanced">Advanced</string>
+    <string name="advanced_settings">Advanced Settings</string>
+    <string name="logging">Logging</string>
+    <string name="connection">Connection</string>
+    <string name="system">System</string>
 </resources>
