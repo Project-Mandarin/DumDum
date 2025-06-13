@@ -48,7 +48,7 @@
     <string name="group_duplicate">Duplicate: \n%s</string>
     <!-- misc -->
     <string name="service_mode">Service Mode</string>
-    <string name="service_mode_proxy">Proxy only</string>
+    <string name="service_mode_proxy">proxy only</string>
     <string name="service_mode_vpn" translatable="false">VPN</string>
     <string name="port_proxy">Proxy Port</string>
     <string name="port_http">HTTP Proxy Port</string>
@@ -545,8 +545,7 @@
     <string name="tls_camouflage_settings">TLS Camouflage Settings</string>
     <string name="test_concurrency">Test concurrency</string>
     <string name="mux_type">Mux protocol</string>
-    <string name="sniff_routing">Sniff result for routing</string>
-    <string name="sniff_override">Sniff result for destination</string>
+    <string name="sniff_routing">sniff result for routing</string>
     <string name="resolve_server">Resolve the server address according to the IPv6 policy</string>
     <string name="auto_select_proxy_apps">Auto select proxy apps</string>
     <string name="auto_select_proxy_apps_message">Auto select proxy apps, this will clear your

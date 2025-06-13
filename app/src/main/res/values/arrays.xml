@@ -388,8 +388,8 @@
 
     <string-array name="tun_implementation">
         <item>gVisor</item>
-        <item>System</item>
-        <item>Mixed</item>
+        <item>system</item>
+        <item>mixed</item>
     </string-array>
 
     <string-array name="hysteria_protocol">
@@ -487,7 +487,6 @@
     <string-array name="traffic_sniffing_values">
         <item>@string/off</item>
         <item>@string/sniff_routing</item>
-        <item>@string/sniff_override</item>
     </string-array>
 
 </resources>

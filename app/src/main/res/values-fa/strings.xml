@@ -510,7 +510,6 @@
     <string name="test_concurrency">آزمایش همزمان اتصال</string>
     <string name="mux_type">پروتکل مالتی‌پلکسر</string>
     <string name="sniff_routing">ردیابی نتایج برای مسیریابی</string>
-    <string name="sniff_override">ردیابی نتایج برای مقصد</string>
     <string name="resolve_server">نشانی سرور را مطابق خط مشی IPv6 بررسی کنید</string>
     <string name="auto_select_proxy_apps">انتخاب خودکار برنامه‌های پراکسی</string>
     <string name="auto_select_proxy_apps_message">انتخاب خودکار برنامه‌های پراکسی، با این کار انتخاب‌های فعلی شما پاک می شود.</string>
