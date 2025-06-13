@@ -442,7 +442,6 @@
     <string name="ws_path">Путь к WebSocket</string>
     <string name="xtls_flow">Flow (подпротокол VLESS)</string>
     <string name="yes">Да</string>
-    <string name="add_profile_import">Импорт&#8230;</string>
     <plurals name="added">
         <item quantity="one">Добавлено</item>
         <item quantity="other">%d прокси добавлено</item>

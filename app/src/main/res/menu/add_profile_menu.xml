@@ -14,25 +14,25 @@
         android:title="@string/add_profile"
         app:showAsAction="ifRoom">
         <menu>
-            <item
-                android:id="@+id/action_new_socks"
-                android:title="@string/action_socks" />
-            <item
-                android:id="@+id/action_new_http"
-                android:title="@string/action_http" />
-            <item android:title="@string/add_profile_import">
-                <menu>
-                    <item
-                        android:id="@+id/action_scan_qr_code"
-                        android:title="@string/add_profile_methods_scan_qr_code" />
-                    <item
-                        android:id="@+id/action_import_clipboard"
-                        android:title="@string/action_import" />
-                    <item
-                        android:id="@+id/action_import_file"
-                        android:title="@string/action_import_file" />
-                </menu>
-            </item>
+            <group android:id="@+id/imports" >
+                <item
+                    android:id="@+id/action_scan_qr_code"
+                    android:title="@string/add_profile_methods_scan_qr_code" />
+                <item
+                    android:id="@+id/action_import_clipboard"
+                    android:title="@string/action_import" />
+                <item
+                    android:id="@+id/action_import_file"
+                    android:title="@string/action_import_file" />
+            </group>
+            <group android:id="@+id/manual" >
+                <item
+                    android:id="@+id/action_new_socks"
+                    android:title="@string/action_socks" />
+                <item
+                    android:id="@+id/action_new_http"
+                    android:title="@string/action_http" />
+            </group>
             <item android:title="@string/add_profile_methods_manual_settings" android:visible="false">
                 <menu>
                     <item
