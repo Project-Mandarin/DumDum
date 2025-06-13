@@ -101,6 +101,14 @@ class AdvancedSettingsFragment : PreferenceFragmentCompat() {
             batteryOptimizations.isEnabled = false
         }
 
+        val showLogcat = findPreference<Preference>("showLogcat")
+        showLogcat?.setOnPreferenceClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.settings_container, LogcatFragment())
+                .addToBackStack(null)
+                .commit()
+            true
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -2,15 +2,17 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory app:title="@string/application">
+    <PreferenceCategory
+        app:initialExpandedChildrenCount="0"
+        app:title="@string/application">
         <SwitchPreference
             app:icon="@drawable/baseline_developer_board_24"
             app:key="acquireWakeLock"
             app:summary="@string/acquire_wake_lock_summary"
             app:title="@string/acquire_wake_lock" />
         <Preference
-            app:key="batteryOptimizations"
             app:icon="@drawable/ic_baseline_running_with_errors_24"
+            app:key="batteryOptimizations"
             app:title="@string/ignore_battery_optimizations"
             app:summary="@string/ignore_battery_optimizations_sum"/>
         <moe.matsuri.nb4a.ui.SimpleMenuPreference
@@ -31,7 +33,9 @@
             app:useSimpleSummaryProvider="true" />
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="@string/connection">
+    <PreferenceCategory
+        app:initialExpandedChildrenCount="0"
+        app:title="@string/connection">
         <SwitchPreference
             app:defaultValue="true"
             app:icon="@drawable/ic_baseline_shuffle_24"
@@ -65,6 +69,10 @@
     </PreferenceCategory>
 
     <PreferenceCategory app:title="@string/logging">
+        <Preference
+            app:icon="@drawable/ic_baseline_import_contacts_24"
+            app:key="showLogcat"
+            app:title="@string/menu_log" />
         <moe.matsuri.nb4a.ui.LongClickListPreference
             app:defaultValue="0"
             app:entries="@array/log_level"
