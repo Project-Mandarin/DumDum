@@ -283,7 +283,7 @@
     <string name="donate_info">I love money</string>
     <string name="ignore_battery_optimizations">Disable Battery Optimizations</string>
     <string name="ignore_battery_optimizations_sum">Allow battery usage in background without restrictions</string>
-    <string name="ignore_battery_optimizations_disabled">Battery usage is unrestricted</string>c
+    <string name="ignore_battery_optimizations_disabled">Battery usage is unrestricted</string>
     <!-- plugin -->
     <string name="plugin">Plugin</string>
     <string name="plugin_configure">Configure…</string>
@@ -496,7 +496,7 @@
     <string name="packet_encoding">Packet Encoding</string>
     <string name="acquire_wake_lock">Acquire WakeLock</string>
     <string name="release_wake_lock">Release WakeLock</string>
-    <string name="acquire_wake_lock_summary">Keep the CPU on</string>
+    <string name="acquire_wake_lock_summary">Keep CPU on</string>
     <string name="action_switch">Switch</string>
 
     <string name="tuic_udp_relay_mode">UDP Relay Mode</string>
@@ -569,5 +569,5 @@
     <string name="advanced_settings">Advanced Settings</string>
     <string name="logging">Logging</string>
     <string name="connection">Connection</string>
-    <string name="system">System</string>
+    <string name="application">Application</string>
 </resources>

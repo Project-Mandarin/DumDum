@@ -59,7 +59,7 @@
     <string name="bypass_lan_in_core">Обход LAN в ядре</string>
     <string name="cag_dns">Настройки DNS</string>
     <string name="cag_misc">Прочие настройки</string>
-    <string name="cag_route">Настройки маршрута</string>
+    <string name="cag_route">Настройки маршрутов</string>
     <string name="cag_ws">Настройки WebSocket</string>
     <string name="certificates">Сертификаты</string>
     <string name="chain_settings">Настройки цепочки</string>
@@ -94,7 +94,7 @@
     <string name="connection_test_testing">Тестирование…</string>
     <string name="connection_test_timeout">Тайм-аут</string>
     <string name="connection_test_unreachable">Недоступен</string>
-    <string name="connection_test_url">URL-адрес проверки подключения</string>
+    <string name="connection_test_url">URL для проверки подключения</string>
     <string name="connection_test_url_test">URL Тест</string>
     <string name="copy">Копировать</string>
     <string name="copy_toast_msg">Ссылка скопирована в буфер.</string>
@@ -155,7 +155,7 @@
     <string name="general_settings">Настройки приложения</string>
     <string name="generating">Создание…</string>
     <string name="github">Исходный код</string>
-    <string name="global_allow_insecure">Всегда разрешать небезопасные</string>
+    <string name="global_allow_insecure">Игнорировать SSL-сертификат прокси</string>
     <string name="group_added">"\"Создано: 
     %s\""</string>
     <string name="group_basic">Базовый</string>
@@ -204,8 +204,9 @@
     <string name="hysteria_stream_receive_window">Окно приема потока QUIC</string>
     <string name="hysteria_upload_mbps">Максимальная скорость загрузки (в Мбит / с)</string>
     <string name="icon_content_description">Значок диалогового окна</string>
-    <string name="ignore_battery_optimizations">Игнорировать оптимизации батареи</string>
-    <string name="ignore_battery_optimizations_sum">Снять некоторые ограничения</string>
+    <string name="ignore_battery_optimizations">Отключить оптимизацию батареи</string>
+    <string name="ignore_battery_optimizations_sum">Разрешить использование заряда в фоновом режиме без ограничений</string>
+    <string name="ignore_battery_optimizations_disabled">Использование заряда не ограничено</string>
     <string name="inbound_settings">Входящие настройки</string>
     <string name="insecure">Ненадежный</string>
     <string name="install_from_fdroid">Установить с F-Droid</string>
@@ -219,7 +220,7 @@
     <string name="landing_proxy">Обратный прокси</string>
     <string name="license">Лицензия</string>
     <string name="lines">%d строк</string>
-    <string name="log_level">Тип журнала</string>
+    <string name="log_level">Уровень логирования</string>
     <string name="log_level_help">Удерживайте для настройки размера буфера.</string>
     <string name="logcat">Экспорт отладочной информации</string>
     <string name="material_clock_toggle_content_description">Выберите AM (до полудня) или PM (после полудня)</string>
@@ -354,7 +355,7 @@
     <string name="server_port">Порт</string>
     <string name="service_failed">Не удалось:</string>
     <string name="service_mode">Сервисный режим</string>
-    <string name="service_mode_proxy">Только прокси</string>
+    <string name="service_mode_proxy">только прокси</string>
     <string name="service_proxy">Прокси-сервис</string>
     <string name="service_subscription">Служба обновления подписки</string>
     <string name="service_vpn">VPN-сервис</string>
@@ -369,7 +370,7 @@
     <string name="show_group_in_notification">Показывать название группы в уведомлении</string>
     <string name="show_system_apps">Показать системн. приложения</string>
     <string name="sni">Server Name Indication (SNI)</string>
-    <string name="sniff_routing">Перехватывать результат для Маршрутизации</string>
+    <string name="sniff_routing">перехватывать для маршрутизации</string>
     <string name="speed">%s/с</string>
     <string name="speed_detail">"Прокси ：%1$s↑ %2$s↓ 
     Прямой ：%3$s↑%4$s↓"</string>
@@ -407,7 +408,7 @@
     <string name="tls_camouflage_settings">Настройки защиты TLS</string>
     <string name="tools_network">Сеть</string>
     <string name="traffic">%1$s↑ %2$s↓</string>
-    <string name="traffic_sniffing">Включить анализ трафика</string>
+    <string name="traffic_sniffing">Перехват трафика</string>
     <string name="trojan_provider">Провайдер Trojan</string>
     <string name="tun_implementation">Реализация TUN</string>
     <string name="udp_connections">%d UDP-соединений</string>
@@ -450,4 +451,9 @@
         <item quantity="one">Удалено</item>
         <item quantity="other">%d элемента(-ов) удалено</item>
     </plurals>
+    <string name="advanced">Расширенные</string>
+    <string name="advanced_settings">Расширенные настройки</string>
+    <string name="logging">Логирование</string>
+    <string name="connection">Подключение</string>
+    <string name="application">Приложение</string>
 </resources>
