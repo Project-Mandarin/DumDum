@@ -59,7 +59,7 @@
     <string name="bypass_lan_in_core">Обход LAN в ядре</string>
     <string name="cag_dns">Настройки DNS</string>
     <string name="cag_misc">Прочие настройки</string>
-    <string name="cag_route">Настройки маршрутов</string>
+    <string name="cag_route">Настройки маршрута</string>
     <string name="cag_ws">Настройки WebSocket</string>
     <string name="certificates">Сертификаты</string>
     <string name="chain_settings">Настройки цепочки</string>
@@ -301,7 +301,7 @@
     <string name="profile_empty">Пожалуйста, выберите профиль</string>
     <string name="profile_import">Импортировать профиль</string>
     <string name="profile_import_message">Подтвердите, что хотите импортировать профиль %s?</string>
-    <string name="profile_name">Имя профиля</string>
+    <string name="profile_name">Имя подключения</string>
     <string name="profile_requiring_plugin" formatted="false">Профиль %s требует установки подключаемого модуля %s, но он не найден.</string>
     <string name="profile_traffic_statistics">Статистика трафика</string>
     <string name="profile_traffic_statistics_summary">Когда отключено, статистика трафика не учитывается</string>
@@ -331,7 +331,7 @@
     <string name="route_bypass_ip">Правило IP для %s</string>
     <string name="route_for">Правило для %s</string>
     <string name="route_manage_assets">Управление ресурсами маршрутов</string>
-    <string name="route_name">Название маршрута</string>
+    <string name="route_name">Имя маршрута</string>
     <string name="route_need_vpn">Правило маршрутизации `%s` зависит от VPN, поэтому игнорируется.</string>
     <string name="route_not_asset">Не файл ресурса: ожидался .db, а не %s</string>
     <string name="route_opt_block_ads">Блокировать рекламу</string>
@@ -456,4 +456,7 @@
     <string name="logging">Логирование</string>
     <string name="connection">Подключение</string>
     <string name="application">Приложение</string>
+    <string name="domain">Домен</string>
+    <string name="ip_address">IP-адрес</string>
+    <string name="routes_settings">Настройки маршрутов</string>
 </resources>

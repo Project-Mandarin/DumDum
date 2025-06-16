@@ -98,7 +98,7 @@
     <string name="transproxy_mode">Transproxy Mode</string>
     <string name="connection_test_url">Connection Test URL</string>
     <!-- proxy category -->
-    <string name="profile_name">Profile Name</string>
+    <string name="profile_name">Connection Name</string>
     <string name="server_address">Server</string>
     <string name="server_port">Port</string>
     <string name="username">Username</string>
@@ -570,4 +570,7 @@
     <string name="logging">Logging</string>
     <string name="connection">Connection</string>
     <string name="application">Application</string>
+    <string name="domain">Domain</string>
+    <string name="ip_address">IP Address</string>
+    <string name="routes_settings">Routes Settings</string>
 </resources>

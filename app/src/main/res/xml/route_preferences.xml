@@ -14,19 +14,19 @@
         <EditTextPreference
             app:icon="@drawable/ic_baseline_domain_24"
             app:key="routeDomain"
-            app:title="Domain"
+            app:title="@string/domain"
             app:useSimpleSummaryProvider="true" />
         <EditTextPreference
             app:icon="@drawable/ic_baseline_add_road_24"
             app:key="routeIP"
-            app:title="IP"
+            app:title="@string/ip_address"
             app:useSimpleSummaryProvider="true" />
         <EditTextPreference
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:icon="@drawable/ic_maps_directions_boat"
             app:key="routePort"
-            app:title="Port"
+            app:title="@string/server_port"
             app:useSimpleSummaryProvider="true" />
         <EditTextPreference
             app:icon="@drawable/ic_baseline_home_24"
@@ -39,7 +39,7 @@
             app:entryValues="@array/route_protocol_value"
             app:icon="@drawable/ic_baseline_compare_arrows_24"
             app:key="routeNetwork"
-            app:title="Protocol"
+            app:title="@string/protocol"
             app:useSimpleSummaryProvider="true" />
         <EditTextPreference
             app:icon="@drawable/ic_baseline_local_bar_24"

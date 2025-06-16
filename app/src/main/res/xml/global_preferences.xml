@@ -64,7 +64,7 @@
             app:isPreferenceVisible="false" />
     </PreferenceCategory>
 
-    <PreferenceCategory app:title="@string/cag_route">
+    <PreferenceCategory app:title="@string/routes_settings">
         <SwitchPreference
             app:icon="@drawable/ic_navigation_apps"
             app:key="proxyApps"
