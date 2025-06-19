@@ -2,20 +2,21 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory app:title="@string/general_settings">
+    <PreferenceCategory app:title="@string/general_settings" app:isPreferenceVisible="false">
         <SwitchPreference
-            app:defaultValue="true"
+            app:defaultValue="false"
             app:icon="@drawable/ic_maps_360"
             app:key="isAutoConnect"
             app:summary="@string/auto_connect_summary"
-            app:title="@string/auto_connect" />
+            app:title="@string/auto_connect" 
+            app:isPreferenceVisible="false" />
         <moe.matsuri.nb4a.ui.ColorPickerPreference
             android:title="@string/theme"
             app:icon="@drawable/ic_baseline_color_lens_24"
             app:key="appTheme"
             app:isPreferenceVisible="false" />
         <moe.matsuri.nb4a.ui.SimpleMenuPreference
-            app:defaultValue="0"
+            app:defaultValue="1"
             app:entries="@array/night_mode"
             app:entryValues="@array/int_array_4"
             app:icon="@drawable/ic_baseline_wb_sunny_24"

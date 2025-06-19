@@ -93,7 +93,7 @@ object DataStore : OnPreferenceDataStoreChangeListener {
 
     var isExpert by configurationStore.boolean(Key.APP_EXPERT)
     var appTheme by configurationStore.int(Key.APP_THEME)
-    var nightTheme by configurationStore.stringToInt(Key.NIGHT_THEME)
+    var nightTheme by configurationStore.stringToInt(Key.NIGHT_THEME) { 1 }
     var serviceMode by configurationStore.string(Key.SERVICE_MODE) { Key.MODE_VPN }
 
     var trafficSniffing by configurationStore.stringToInt(Key.TRAFFIC_SNIFFING) { 1 }
@@ -147,7 +147,7 @@ object DataStore : OnPreferenceDataStoreChangeListener {
     var individual by configurationStore.string(Key.INDIVIDUAL)
     var showDirectSpeed by configurationStore.boolean(Key.SHOW_DIRECT_SPEED) { false }
 
-    val persistAcrossReboot by configurationStore.boolean(Key.PERSIST_ACROSS_REBOOT) { true }
+    val persistAcrossReboot by configurationStore.boolean(Key.PERSIST_ACROSS_REBOOT) { false }
 
     var appendHttpProxy by configurationStore.boolean(Key.APPEND_HTTP_PROXY)
     var connectionTestURL by configurationStore.string(Key.CONNECTION_TEST_URL) { CONNECTION_TEST_URL }
