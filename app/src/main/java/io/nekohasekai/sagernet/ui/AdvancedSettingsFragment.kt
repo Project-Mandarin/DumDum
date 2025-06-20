@@ -65,7 +65,6 @@ class AdvancedSettingsFragment : PreferenceFragmentCompat() {
             val view = EditText(context).apply {
                 inputType = EditorInfo.TYPE_CLASS_NUMBER
                 var size = DataStore.logBufSize
-                if (size == 0) size = 50
                 setText(size.toString())
             }
 
