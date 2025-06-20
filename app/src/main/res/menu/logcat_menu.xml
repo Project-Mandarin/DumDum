@@ -8,7 +8,7 @@
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_send_logcat"
-        android:icon="@drawable/baseline_send_24"
+        android:icon="@drawable/ic_social_share"
         android:title="@string/logcat"
         app:showAsAction="ifRoom" />
     <item

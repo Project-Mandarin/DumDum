@@ -30,7 +30,7 @@ class LogcatFragment : ToolbarFragment(R.layout.layout_logcat),
         if (activity is AdvancedSettingsActivity) {
             val advancedActivity = activity as AdvancedSettingsActivity
             val includedToolbar = view.findViewById<Toolbar>(R.id.toolbar)
-            includedToolbar.isVisible = false // Hide the included toolbar
+            includedToolbar.isVisible = false
 
             val activityToolbar = advancedActivity.findViewById<Toolbar>(R.id.toolbar)
             this.toolbar = activityToolbar

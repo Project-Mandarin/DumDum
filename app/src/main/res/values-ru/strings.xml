@@ -229,7 +229,7 @@
     <string name="menu_about">О приложении</string>
     <string name="menu_configuration">Подключения</string>
     <string name="menu_group">Группы</string>
-    <string name="menu_log">Журналы</string>
+    <string name="menu_log">Логи</string>
     <string name="menu_route">Маршруты</string>
     <string name="menu_tools">Инструменты</string>
     <string name="menu_traffic">Трафик</string>
