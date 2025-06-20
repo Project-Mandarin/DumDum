@@ -12,6 +12,7 @@ import android.view.View
 import android.widget.ScrollView
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
+import androidx.core.view.isVisible
 import io.nekohasekai.sagernet.R
 import io.nekohasekai.sagernet.databinding.LayoutLogcatBinding
 import io.nekohasekai.sagernet.ktx.*
@@ -26,11 +27,28 @@ class LogcatFragment : ToolbarFragment(R.layout.layout_logcat),
 
     @SuppressLint("RestrictedApi", "WrongConstant")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-        toolbar.setTitle(R.string.menu_log)
+        if (activity is AdvancedSettingsActivity) {
+            val advancedActivity = activity as AdvancedSettingsActivity
+            val includedToolbar = view.findViewById<Toolbar>(R.id.toolbar)
+            includedToolbar.isVisible = false // Hide the included toolbar
 
-        toolbar.inflateMenu(R.menu.logcat_menu)
-        toolbar.setOnMenuItemClickListener(this)
+            val activityToolbar = advancedActivity.findViewById<Toolbar>(R.id.toolbar)
+            this.toolbar = activityToolbar
+
+            activityToolbar.setTitle(R.string.menu_log)
+            activityToolbar.setNavigationIcon(R.drawable.ic_navigation_close)
+            activityToolbar.setNavigationOnClickListener {
+                parentFragmentManager.popBackStack()
+            }
+            activityToolbar.menu.clear()
+            activityToolbar.inflateMenu(R.menu.logcat_menu)
+            activityToolbar.setOnMenuItemClickListener(this)
+        } else {
+            super.onViewCreated(view, savedInstanceState)
+            toolbar.setTitle(R.string.menu_log)
+            toolbar.inflateMenu(R.menu.logcat_menu)
+            toolbar.setOnMenuItemClickListener(this)
+        }
 
         binding = LayoutLogcatBinding.bind(view)
 
@@ -42,6 +60,20 @@ class LogcatFragment : ToolbarFragment(R.layout.layout_logcat),
 
         reloadSession()
         // TODO new logcat
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        if (activity is AdvancedSettingsActivity) {
+            val advancedActivity = activity as AdvancedSettingsActivity
+            val toolbar = advancedActivity.findViewById<Toolbar>(R.id.toolbar)
+            toolbar.setTitle(R.string.advanced)
+            toolbar.setNavigationIcon(R.drawable.ic_navigation_close)
+            toolbar.setNavigationOnClickListener {
+                advancedActivity.finish()
+            }
+            toolbar.menu.clear()
+        }
     }
 
     private fun getColorForLine(line: String): ForegroundColorSpan {
