@@ -6,6 +6,8 @@ import org.gradle.api.Project
 import org.gradle.api.plugins.ExtensionAware
 import org.gradle.kotlin.dsl.getByName
 import org.jetbrains.kotlin.gradle.dsl.KotlinJvmOptions
+import java.time.Clock.systemUTC
+import java.time.LocalDate
 import java.util.Base64
 import java.util.Properties
 import kotlin.system.exitProcess
@@ -57,7 +59,6 @@ fun Project.requireLocalProperties(): Properties {
 
         val base64 = System.getenv("LOCAL_PROPERTIES")
         if (!base64.isNullOrBlank()) {
-
             localProperties.load(Base64.getDecoder().decode(base64).inputStream())
         } else if (project.rootProject.file("local.properties").exists()) {
             localProperties.load(rootProject.file("local.properties").inputStream())
@@ -131,7 +132,7 @@ fun Project.setupCommon() {
                     it as BaseVariantOutputImpl
                     it.outputFileName = it.outputFileName.replace(
                         "app", "${project.name}-" + variant.versionName
-                    ).replace("-release", "").replace("-oss", "")
+                    ).replace("-release", "").replace("-github", "")
                 }
             }
         }
@@ -156,7 +157,7 @@ fun Project.setupAppCommon() {
                     keyPassword = pwd
                 }
             }
-        } else if (requireFlavor().contains("(Oss|Expert|Play)Release".toRegex())) {
+        } else if (requireFlavor().contains("(GitHub|Expert|Play)Release".toRegex())) {
             exitProcess(0)
         }
         buildTypes {
@@ -169,15 +170,30 @@ fun Project.setupAppCommon() {
     }
 }
 
+fun Project.getGitCommit(): String {
+    val stdout = java.io.ByteArrayOutputStream()
+
+    project.exec {
+        commandLine("git", "rev-parse", "--short", "HEAD")
+        standardOutput = stdout
+    }
+
+    return stdout.toString().trim()
+}
+
 fun Project.setupApp() {
     val pkgName = requireMetadata().getProperty("PACKAGE_NAME")
     val verName = requireMetadata().getProperty("VERSION_NAME")
-    val verCode = (requireMetadata().getProperty("VERSION_CODE").toInt()) * 5
+    val verCode = requireMetadata().getProperty("VERSION_CODE").toInt()
+    val gitCommit = getGitCommit()
+
     android.apply {
         defaultConfig {
             applicationId = pkgName
             versionCode = verCode
             versionName = verName
+            buildConfigField("String", "BUILD_TIME", "\"${LocalDate.now(systemUTC())}\"")
+            buildConfigField("String", "GIT_COMMIT", "\"$gitCommit\"")
         }
     }
     setupAppCommon()
@@ -188,7 +204,6 @@ fun Project.setupApp() {
         buildTypes {
             getByName("release") {
                 proguardFiles(
-                    getDefaultProguardFile("proguard-android-optimize.txt"),
                     file("proguard-rules.pro")
                 )
             }
@@ -201,7 +216,7 @@ fun Project.setupApp() {
 
         flavorDimensions += "vendor"
         productFlavors {
-            create("oss")
+            create("github")
             create("fdroid")
             create("play")
         }
@@ -211,7 +226,7 @@ fun Project.setupApp() {
                 this as BaseVariantOutputImpl
                 outputFileName = outputFileName.replace(project.name, "DumDum-$versionName")
                     .replace("-release", "")
-                    .replace("-oss", "")
+                    .replace("-github", "")
             }
         }
 

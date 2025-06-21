@@ -277,7 +277,7 @@ fun Context.getColorAttr(@AttrRes resId: Int): Int {
 val isExpert: Boolean by lazy { BuildConfig.DEBUG || DataStore.isExpert }
 
 val isExpertFlavor = ((BuildConfig.FLAVOR == "expert") || BuildConfig.DEBUG)
-const val isOss = BuildConfig.FLAVOR == "oss"
+const val isGitHub = BuildConfig.FLAVOR == "github"
 const val isFdroid = BuildConfig.FLAVOR == "fdroid"
 const val isPlay = BuildConfig.FLAVOR == "play"
 
