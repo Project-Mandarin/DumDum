@@ -1,5 +1,4 @@
 # DumDum<sub><sup>[^1]</sup></sub>
-
 Designed as a simple, minimalistic & universal client for connecting to SOCKS/HTTP/HTTPS proxies.
 
 <p align="center">
@@ -8,16 +7,20 @@ Designed as a simple, minimalistic & universal client for connecting to SOCKS/HT
 
 ## Requirements
 
-### To Use
-- Android 8 (Oreo) — Android 15 (Vanilla Ice Cream)
-- `arm64-v8a` / `armeabi-v7a` / `x86` / `x86_64` architecture
+### Use
+Android 8+ • Multi-architecture support[^2]
 
-### To Build
-- Android NDK 25.2.9519653
-- Android SDK 35.0.1
-- CMake 3.22.1
-- Go 1.24.2
-- Java 17
+### Build
+Android NDK r25 • Android SDK 35 • CMake 3.22 • Go 1.24 • Java 17
+
+## Support Us
+Support our development and future upgrades. We are open to crypto donations:
+
+|                                                                                                                                      | Network | Wallet Address                               |
+|--------------------------------------------------------------------------------------------------------------------------------------|---------|----------------------------------------------|
+| ![BTC](https://img.shields.io/badge/BitCoin-orange?style=flat-square&logo=bitcoin&label=Donate&labelColor=white)                     | BTC     | `1ANFgxrq94chrfms7J4fobn7sWd9XCmKLP`         |
+| ![ETH](https://img.shields.io/badge/Ethereum-purple?style=flat-square&logo=Ethereum&logoColor=purple&label=Donate&labelColor=f6f8fa) | ERC20   | `0x3ecb30f13f6ddc0bfaac662d4ab93569f82dce69` |
+| ![USDT](https://img.shields.io/badge/USDT-cadetblue?style=flat-square&logo=Tether&label=Donate&labelColor=white)                     | TRC20   | `TNFsR2bZ1LkviKJJ8NQ7EBmgqC9rrRCWgk`         |
 
 ## References
 - [Exclave](https://github.com/dyhkwong/Exclave)
@@ -26,3 +29,4 @@ Designed as a simple, minimalistic & universal client for connecting to SOCKS/HT
 - [sing-box](https://github.com/SagerNet/sing-box)
 
 [^1]: https://www.urbandictionary.com/define.php?term=Dum-Dum
+[^2]: arm64-v8a, armeabi-v7a, x86, x86_64 are supported
