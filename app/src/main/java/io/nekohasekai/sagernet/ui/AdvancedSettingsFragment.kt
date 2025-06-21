@@ -68,7 +68,7 @@ class AdvancedSettingsFragment : PreferenceFragmentCompat() {
                 setText(size.toString())
             }
 
-            MaterialAlertDialogBuilder(requireContext()).setTitle("Log buffer size (kb)")
+            MaterialAlertDialogBuilder(requireContext()).setTitle(R.string.log_size)
                 .setView(view)
                 .setPositiveButton(android.R.string.ok) { _, _ ->
                     DataStore.logBufSize = view.text.toString().toInt()
