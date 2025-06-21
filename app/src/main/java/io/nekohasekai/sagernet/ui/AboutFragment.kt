@@ -27,8 +27,6 @@ class AboutFragment : ToolbarFragment(R.layout.layout_about) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val binding = LayoutAboutBinding.bind(view)
-
         ViewCompat.setOnApplyWindowInsetsListener(view, ListListener)
         toolbar.setTitle(R.string.menu_about)
 
@@ -41,10 +39,8 @@ class AboutFragment : ToolbarFragment(R.layout.layout_about) {
 
         override fun getMaterialAboutList(activityContext: Context): MaterialAboutList {
 
-            var versionName = BuildConfig.VERSION_NAME
-            if (!isOss) {
-                versionName += " ${BuildConfig.FLAVOR}"
-            }
+            var versionName = "${BuildConfig.VERSION_NAME} (${BuildConfig.FLAVOR} ${BuildConfig.GIT_COMMIT} ${BuildConfig.BUILD_TIME})"
+
             if (BuildConfig.DEBUG) {
                 versionName += " DEBUG"
             }
