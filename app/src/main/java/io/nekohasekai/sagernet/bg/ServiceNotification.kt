@@ -152,14 +152,6 @@ class ServiceNotification(
                 )
             ).setShowsUserInterface(false).build()
             it.addAction(closeAction)
-
-            val resetUpstreamAction = NotificationCompat.Action.Builder(
-                0, service.getString(R.string.reset_connections),
-                PendingIntent.getBroadcast(
-                    service, 0, Intent(Action.RESET_UPSTREAM_CONNECTIONS), flags
-                )
-            ).setShowsUserInterface(false).build()
-            it.addAction(resetUpstreamAction)
         }
     }
 
