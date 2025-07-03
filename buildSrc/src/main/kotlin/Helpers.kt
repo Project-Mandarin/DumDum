@@ -204,6 +204,7 @@ fun Project.setupApp() {
         buildTypes {
             getByName("release") {
                 proguardFiles(
+                    getDefaultProguardFile("proguard-android-optimize.txt"),
                     file("proguard-rules.pro")
                 )
             }
