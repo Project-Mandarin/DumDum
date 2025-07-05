@@ -198,7 +198,7 @@
     <string name="reboot_required">Failed to start VPN service. You might need to reboot your
         device.</string>
     <!-- alert category -->
-    <string name="profile_empty">Please select a profile</string>
+    <string name="profile_empty">Please select a connection</string>
     <string name="connect">Connect</string>
     <string name="clipboard_empty">Buffer is empty</string>
     <!-- menu category -->

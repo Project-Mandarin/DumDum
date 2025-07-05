@@ -298,7 +298,7 @@
     <string name="prefer">Предпочитать</string>
     <string name="preference_copied">Текст \"%1$s\" скопирован в буфер</string>
     <string name="profile_config">Настр. подключения</string>
-    <string name="profile_empty">Пожалуйста, выберите профиль</string>
+    <string name="profile_empty">Пожалуйста, выберите подключение</string>
     <string name="profile_import">Импортировать профиль</string>
     <string name="profile_import_message">Подтвердите, что хотите импортировать профиль %s?</string>
     <string name="profile_name">Имя подключения</string>
