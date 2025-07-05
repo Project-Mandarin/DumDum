@@ -76,11 +76,6 @@ func InitCore(process, cachePath, internalAssets, externalAssets string,
 		if err == nil {
 			updateRootCACerts(pem)
 		}
-
-		// bg
-		// if isBgProcess {
-		//	extractAssets()
-		// }
 	}()
 }
 
