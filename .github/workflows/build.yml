@@ -37,8 +37,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          path: app/libs/libcore.aar
           name: libcore
+          path: app/libs/libcore.aar
 
   dumdum:
     name: build DumDum
@@ -73,5 +73,5 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: DumDum
+          name: "DumDum-${{ github.run_number }}"
           path: app/build/outputs/apk/github/release/*.apk
