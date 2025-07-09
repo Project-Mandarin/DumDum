@@ -68,11 +68,8 @@ func InitCore(process, cachePath, internalAssets, externalAssets string,
 		defer device.DeferPanicToError("InitCore-go", func(err error) { log.Println(err) })
 		device.GoDebug(process)
 
-		externalAssetsPath = externalAssets
-		internalAssetsPath = internalAssets
-
 		// certs
-		pem, err := os.ReadFile(externalAssetsPath + "ca.pem")
+		pem, err := os.ReadFile(externalAssets + "ca.pem")
 		if err == nil {
 			updateRootCACerts(pem)
 		}
