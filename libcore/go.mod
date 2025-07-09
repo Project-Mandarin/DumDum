@@ -7,13 +7,12 @@ toolchain go1.23.6
 require (
 	github.com/matsuridayo/libneko v1.0.0 // replaced
 	github.com/miekg/dns v1.1.63
-	github.com/oschwald/maxminddb-golang v1.12.0
+	github.com/oschwald/maxminddb-golang v1.12.0 // indirect
 	github.com/sagernet/sing v0.6.6-0.20250406121928-926a5a1e8bb7
 	github.com/sagernet/sing-box v1.0.0 // replaced
 	github.com/sagernet/sing-dns v0.4.1
 	github.com/sagernet/sing-tun v0.6.1
 	github.com/ulikunitz/xz v0.5.11
-	golang.org/x/mobile v0.0.0-20231108233038-35478a0c49da
 	golang.org/x/sys v0.31.0
 )
 
