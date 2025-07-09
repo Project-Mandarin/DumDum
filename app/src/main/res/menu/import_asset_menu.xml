@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/action_import_file"
-        android:icon="@drawable/ic_action_note_add"
+        android:icon="@drawable/ic_action_add"
         android:title="@string/action_import_file"
         app:showAsAction="always" />
 </menu>
