@@ -258,8 +258,6 @@
     <string name="plugin">Eklenti</string>
     <string name="ignore_battery_optimizations_sum">Bazı kısıtlamaları kaldır</string>
     <string name="ignore_battery_optimizations">Pil optimizasyonlarını devre dışı bırak</string>
-    <string name="donate_info">Paraya aşığım</string>
-    <string name="donate">Bağış yap</string>
     <string name="deduplication">Tekilleştirme</string>
     <string name="no_proxies_found_in_clipboard">Kopyalama panosunda vekil sunucu bulunamadı</string>
     <string name="no_proxies_found_in_file">Dosya içinde vekil sunucu bulunamadı</string>

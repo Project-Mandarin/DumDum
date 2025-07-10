@@ -307,8 +307,6 @@
     <string name="plugin">الإضافات</string>
     <string name="ignore_battery_optimizations_sum">قم بإزالة بعض القيود</string>
     <string name="ignore_battery_optimizations">تجاهل تحسينات البطارية</string>
-    <string name="donate_info">انا احب المال</string>
-    <string name="donate">تبرع</string>
     <string name="deduplication">احذف البيانات المكررة</string>
     <string name="no_proxies_found_in_clipboard">لم يتم العثور على بروکسیز في الحافظة</string>
     <string name="no_proxies_found_in_file">لم يتم العثور على بروکسیز في الملف</string>

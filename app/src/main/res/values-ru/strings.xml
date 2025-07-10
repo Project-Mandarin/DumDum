@@ -119,8 +119,8 @@
     <string name="domain_strategy_for_direct">Правило домена для Прямого</string>
     <string name="domain_strategy_for_remote">Правило домена для Удаленного</string>
     <string name="domain_strategy_for_server">Правило домена для Адреса сервера</string>
-    <string name="donate">Пожертвовать</string>
-    <string name="donate_info">Я люблю деньги</string>
+    <string name="support_us">Поддержите нас</string>
+    <string name="support_us_summary">Поддержите развитие проекта и будущие обновления. Мы принимаем донаты в криптовалюте.</string>
     <string name="download">Скачать</string>
     <string name="early_data_header_name">Имя заголовка ранних данных</string>
     <string name="ech_config">Конфигурация ECH</string>

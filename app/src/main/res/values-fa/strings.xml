@@ -267,8 +267,6 @@
     <string name="no_proxies_found_in_file">هیچ پراکسی در فایل مورد نظر یافت نشد.</string>
     <string name="no_proxies_found_in_clipboard">هیچ پراکسی در بریده‌دان یافت نشد.</string>
     <string name="deduplication">حذف موارد تکراری</string>
-    <string name="donate">حمایت از برنامه‌نویس</string>
-    <string name="donate_info">عاشق پول هستم!</string>
     <string name="ignore_battery_optimizations">بهینه‌سازی باتری را برای این برنامه غیرفعال کنید</string>
     <string name="ignore_battery_optimizations_sum">چند محدودیت برداشته می‌شود</string>
     <!-- plugin -->

@@ -7,11 +7,9 @@
     <string name="share_qr_nfc">Code QR</string>
     <string name="deprecated">Obsolète</string>
     <string name="insecure">Non sûr</string>
-    <string name="donate">Faire un don</string>
     <string name="plugin">Greffon</string>
     <string name="ignore_battery_optimizations_sum">Retirer certaines restrictions</string>
     <string name="ignore_battery_optimizations">Ignorer l\'optimisation de la batterie</string>
-    <string name="donate_info">J\'adore l\'argent</string>
     <string name="apply">Appliquer</string>
     <string name="no">Non</string>
     <string name="yes">Oui</string>
