@@ -14,13 +14,7 @@ Android 8+ • Multi-architecture support[^2]
 Android NDK r25 • Android SDK 35 • CMake 3.22 • Go 1.24 • Java 17
 
 ## Support Us
-Support our development and future upgrades. We are open to crypto donations:
-
-|                                                                                                                                      | Network | Wallet Address                               |
-|--------------------------------------------------------------------------------------------------------------------------------------|---------|----------------------------------------------|
-| ![BTC](https://img.shields.io/badge/BitCoin-orange?style=flat-square&logo=bitcoin&label=Donate&labelColor=white)                     | BTC     | `1ANFgxrq94chrfms7J4fobn7sWd9XCmKLP`         |
-| ![ETH](https://img.shields.io/badge/Ethereum-purple?style=flat-square&logo=Ethereum&logoColor=purple&label=Donate&labelColor=f6f8fa) | ERC20   | `0x3ecb30f13f6ddc0bfaac662d4ab93569f82dce69` |
-| ![USDT](https://img.shields.io/badge/USDT-cadetblue?style=flat-square&logo=Tether&label=Donate&labelColor=white)                     | TRC20   | `TNFsR2bZ1LkviKJJ8NQ7EBmgqC9rrRCWgk`         |
+[Wiki](https://github.com/Project-Mandarin/DumDum/wiki/Support-Us)
 
 ## References
 - [Exclave](https://github.com/dyhkwong/Exclave)
