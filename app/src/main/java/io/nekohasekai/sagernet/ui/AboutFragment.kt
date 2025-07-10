@@ -70,6 +70,17 @@ class AboutFragment : ToolbarFragment(R.layout.layout_about) {
                             )
                         }
                         .build())
+                    .addItem(
+                        MaterialAboutActionItem.Builder()
+                            .icon(R.drawable.ic_baseline_gift_24)
+                            .text(R.string.support_us)
+                            .subText(R.string.support_us_summary)
+                            .setOnClickAction {
+                                requireContext().launchCustomTab(
+                                    "https://github.com/Project-Mandarin/DumDum/wiki/Support-Us"
+                                )
+                            }
+                            .build())
                     .apply {
                         PackageCache.awaitLoadSync()
                         for ((_, pkg) in PackageCache.installedPluginPackages) {
