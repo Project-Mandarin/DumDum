@@ -83,7 +83,13 @@ object ProfileManager {
         profile.id = SagerDatabase.proxyDao.addProxy(profile)
         
         if (autoSelect) {
+            val previousSelected = DataStore.selectedProxy
             DataStore.selectedProxy = profile.id
+            // Notify UI about the selection change
+            if (previousSelected != profile.id) {
+                ProfileManager.postUpdate(previousSelected, true)
+                ProfileManager.postUpdate(profile.id, true)
+            }
         }
         
         iterator { onAdd(profile) }
@@ -105,12 +111,18 @@ object ProfileManager {
     suspend fun deleteProfile2(groupId: Long, profileId: Long) {
         if (SagerDatabase.proxyDao.deleteById(profileId) == 0) return
         if (DataStore.selectedProxy == profileId) {
+            val previousSelected = DataStore.selectedProxy
             // Select the first available profile in the group
             val remainingProfiles = SagerDatabase.proxyDao.getByGroup(groupId)
             if (remainingProfiles.isNotEmpty()) {
                 DataStore.selectedProxy = remainingProfiles.first().id
+                // Notify UI about the selection change
+                ProfileManager.postUpdate(previousSelected, true)
+                ProfileManager.postUpdate(DataStore.selectedProxy, true)
             } else {
                 DataStore.selectedProxy = 0L
+                // Notify UI about the selection change
+                ProfileManager.postUpdate(previousSelected, true)
             }
         }
     }
@@ -118,12 +130,18 @@ object ProfileManager {
     suspend fun deleteProfile(groupId: Long, profileId: Long) {
         if (SagerDatabase.proxyDao.deleteById(profileId) == 0) return
         if (DataStore.selectedProxy == profileId) {
+            val previousSelected = DataStore.selectedProxy
             // Select the first available profile in the group
             val remainingProfiles = SagerDatabase.proxyDao.getByGroup(groupId)
             if (remainingProfiles.isNotEmpty()) {
                 DataStore.selectedProxy = remainingProfiles.first().id
+                // Notify UI about the selection change
+                ProfileManager.postUpdate(previousSelected, true)
+                ProfileManager.postUpdate(DataStore.selectedProxy, true)
             } else {
                 DataStore.selectedProxy = 0L
+                // Notify UI about the selection change
+                ProfileManager.postUpdate(previousSelected, true)
             }
         }
         iterator { onRemoved(groupId, profileId) }
