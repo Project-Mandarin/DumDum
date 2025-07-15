@@ -105,14 +105,26 @@ object ProfileManager {
     suspend fun deleteProfile2(groupId: Long, profileId: Long) {
         if (SagerDatabase.proxyDao.deleteById(profileId) == 0) return
         if (DataStore.selectedProxy == profileId) {
-            DataStore.selectedProxy = 0L
+            // Select the first available profile in the group
+            val remainingProfiles = SagerDatabase.proxyDao.getByGroup(groupId)
+            if (remainingProfiles.isNotEmpty()) {
+                DataStore.selectedProxy = remainingProfiles.first().id
+            } else {
+                DataStore.selectedProxy = 0L
+            }
         }
     }
 
     suspend fun deleteProfile(groupId: Long, profileId: Long) {
         if (SagerDatabase.proxyDao.deleteById(profileId) == 0) return
         if (DataStore.selectedProxy == profileId) {
-            DataStore.selectedProxy = 0L
+            // Select the first available profile in the group
+            val remainingProfiles = SagerDatabase.proxyDao.getByGroup(groupId)
+            if (remainingProfiles.isNotEmpty()) {
+                DataStore.selectedProxy = remainingProfiles.first().id
+            } else {
+                DataStore.selectedProxy = 0L
+            }
         }
         iterator { onRemoved(groupId, profileId) }
         if (SagerDatabase.proxyDao.countByGroup(groupId) > 1) {
