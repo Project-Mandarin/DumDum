@@ -331,8 +331,12 @@ class ConfigurationFragment @JvmOverloads constructor(
 
     suspend fun import(proxies: List<AbstractBean>) {
         val targetId = DataStore.selectedGroupForImport()
-        for (proxy in proxies) {
-            ProfileManager.createProfile(targetId, proxy)
+        for ((index, proxy) in proxies.withIndex()) {
+            if (index == proxies.size - 1) {
+                ProfileManager.createProfile(targetId, proxy, autoSelect = true)
+            } else {
+                ProfileManager.createProfile(targetId, proxy, autoSelect = false)
+            }
         }
         onMainDispatcher {
             DataStore.editingGroup = targetId

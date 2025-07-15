@@ -72,7 +72,7 @@ object ProfileManager {
         }
     }
 
-    suspend fun createProfile(groupId: Long, bean: AbstractBean): ProxyEntity {
+    suspend fun createProfile(groupId: Long, bean: AbstractBean, autoSelect: Boolean = true): ProxyEntity {
         bean.applyDefaultValues()
 
         val profile = ProxyEntity(groupId = groupId).apply {
@@ -81,6 +81,11 @@ object ProfileManager {
             userOrder = SagerDatabase.proxyDao.nextOrder(groupId) ?: 1
         }
         profile.id = SagerDatabase.proxyDao.addProxy(profile)
+        
+        if (autoSelect) {
+            DataStore.selectedProxy = profile.id
+        }
+        
         iterator { onAdd(profile) }
         return profile
     }
