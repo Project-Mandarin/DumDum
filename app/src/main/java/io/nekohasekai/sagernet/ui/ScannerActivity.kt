@@ -126,8 +126,12 @@ class ScannerActivity : ThemedActivity(),
                         DataStore.selectedGroup = currentGroupId
                     }
 
-                    for (profile in results) {
-                        ProfileManager.createProfile(currentGroupId, profile)
+                    for ((index, profile) in results.withIndex()) {
+                        if (index == results.size - 1) {
+                            ProfileManager.createProfile(currentGroupId, profile, autoSelect = true)
+                        } else {
+                            ProfileManager.createProfile(currentGroupId, profile, autoSelect = false)
+                        }
                         importedN.addAndGet(1)
                     }
                 } else {
