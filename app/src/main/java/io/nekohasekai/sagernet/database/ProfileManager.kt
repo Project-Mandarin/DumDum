@@ -72,7 +72,7 @@ object ProfileManager {
         }
     }
 
-    suspend fun createProfile(groupId: Long, bean: AbstractBean): ProxyEntity {
+    suspend fun createProfile(groupId: Long, bean: AbstractBean, autoSelect: Boolean = true): ProxyEntity {
         bean.applyDefaultValues()
 
         val profile = ProxyEntity(groupId = groupId).apply {
@@ -81,6 +81,16 @@ object ProfileManager {
             userOrder = SagerDatabase.proxyDao.nextOrder(groupId) ?: 1
         }
         profile.id = SagerDatabase.proxyDao.addProxy(profile)
+        
+        if (autoSelect) {
+            val previousSelected = DataStore.selectedProxy
+            DataStore.selectedProxy = profile.id
+            if (previousSelected != profile.id) {
+                ProfileManager.postUpdate(previousSelected, true)
+                ProfileManager.postUpdate(profile.id, true)
+            }
+        }
+        
         iterator { onAdd(profile) }
         return profile
     }
@@ -100,14 +110,32 @@ object ProfileManager {
     suspend fun deleteProfile2(groupId: Long, profileId: Long) {
         if (SagerDatabase.proxyDao.deleteById(profileId) == 0) return
         if (DataStore.selectedProxy == profileId) {
-            DataStore.selectedProxy = 0L
+            val previousSelected = DataStore.selectedProxy
+            val remainingProfiles = SagerDatabase.proxyDao.getByGroup(groupId)
+            if (remainingProfiles.isNotEmpty()) {
+                DataStore.selectedProxy = remainingProfiles.first().id
+                ProfileManager.postUpdate(previousSelected, true)
+                ProfileManager.postUpdate(DataStore.selectedProxy, true)
+            } else {
+                DataStore.selectedProxy = 0L
+                ProfileManager.postUpdate(previousSelected, true)
+            }
         }
     }
 
     suspend fun deleteProfile(groupId: Long, profileId: Long) {
         if (SagerDatabase.proxyDao.deleteById(profileId) == 0) return
         if (DataStore.selectedProxy == profileId) {
-            DataStore.selectedProxy = 0L
+            val previousSelected = DataStore.selectedProxy
+            val remainingProfiles = SagerDatabase.proxyDao.getByGroup(groupId)
+            if (remainingProfiles.isNotEmpty()) {
+                DataStore.selectedProxy = remainingProfiles.first().id
+                ProfileManager.postUpdate(previousSelected, true)
+                ProfileManager.postUpdate(DataStore.selectedProxy, true)
+            } else {
+                DataStore.selectedProxy = 0L
+                ProfileManager.postUpdate(previousSelected, true)
+            }
         }
         iterator { onRemoved(groupId, profileId) }
         if (SagerDatabase.proxyDao.countByGroup(groupId) > 1) {

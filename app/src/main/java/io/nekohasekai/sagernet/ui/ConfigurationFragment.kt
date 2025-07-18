@@ -331,8 +331,12 @@ class ConfigurationFragment @JvmOverloads constructor(
 
     suspend fun import(proxies: List<AbstractBean>) {
         val targetId = DataStore.selectedGroupForImport()
-        for (proxy in proxies) {
-            ProfileManager.createProfile(targetId, proxy)
+        for ((index, proxy) in proxies.withIndex()) {
+            if (index == proxies.size - 1) {
+                ProfileManager.createProfile(targetId, proxy, autoSelect = true)
+            } else {
+                ProfileManager.createProfile(targetId, proxy, autoSelect = false)
+            }
         }
         onMainDispatcher {
             DataStore.editingGroup = targetId
@@ -1591,6 +1595,17 @@ class ConfigurationFragment @JvmOverloads constructor(
                 removeButton.setOnClickListener {
                     adapter?.let {
                         val index = it.configurationIdList.indexOf(proxyEntity.id)
+                        val isSelectedProfile = (selectedItem?.id ?: DataStore.selectedProxy) == proxyEntity.id
+                        
+                        if (isSelectedProfile && it.configurationIdList.size > 1) {
+                            val newSelectedIndex = if (index == 0) 1 else 0
+                            configurationListView.post {
+                                val newSelectedHolder = layoutManager.findViewByPosition(newSelectedIndex)
+                                    ?.let { configurationListView.getChildViewHolder(it) } as? ConfigurationHolder
+                                newSelectedHolder?.view?.performClick()
+                            }
+                        }
+                        
                         it.remove(index)
                         undoManager.remove(index to proxyEntity)
                     }
@@ -1600,6 +1615,8 @@ class ConfigurationFragment @JvmOverloads constructor(
                 shareLayout.isGone = selectOrChain
                 editButton.isGone = select
                 removeButton.isGone = select
+                
+
 
                 proxyEntity.nekoBean?.apply {
                     shareLayout.isGone = true
