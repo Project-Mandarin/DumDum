@@ -67,7 +67,6 @@ jobs:
           echo "sdk.dir=${ANDROID_SDK_ROOT}" > local.properties
           echo "ndk.dir=${ANDROID_NDK_ROOT}" >> local.properties
           echo "${{ secrets.JKS_B64 }}" | base64 --decode >> dumdum.jks
-          ./run init action gradle
           ./gradlew app:assembleGitHubRelease
 
       - name: Upload artifact

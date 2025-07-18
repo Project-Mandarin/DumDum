@@ -3,7 +3,8 @@ set -e
 
 source "buildScript/init/env.sh"
 ENV_NB4A=1
-source "buildScript/lib/core/get_source_env.sh"
+COMMIT_SING_BOX="01b72e129794acae89e1c7929d0ba5a63b0e67f8"
+COMMIT_LIBNEKO="1c47a3af71990a7b2192e03292b4d246c308ef0b"
 pushd ..
 
 ####

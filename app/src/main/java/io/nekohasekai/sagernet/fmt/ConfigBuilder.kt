@@ -527,8 +527,6 @@ fun buildConfig(
                     makeSingBoxRule(rule.ip.listByLineOrComma(), true)
                 }
 
-                if (rule_set != null) generateRuleSet(rule_set, ruleSets)
-
                 if (rule.port.isNotBlank()) {
                     port = mutableListOf<Int>()
                     port_range = mutableListOf<String>()
