@@ -17,7 +17,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.PopupMenu
@@ -1322,16 +1321,6 @@ class ConfigurationFragment @JvmOverloads constructor(
                         notifyItemInserted(index)
                     }
                 }
-                
-                // Скрываем все лоадеры при отмене удаления
-                for (i in 0 until configurationListView.childCount) {
-                    val child = configurationListView.getChildAt(i)
-                    val holder = configurationListView.getChildViewHolder(child) as? ConfigurationHolder
-                    holder?.let {
-                        it.removeProgress.isVisible = false
-                        it.removeButton.isVisible = true
-                    }
-                }
             }
 
             override fun commit(actions: List<Pair<Int, ProxyEntity>>) {
@@ -1339,18 +1328,6 @@ class ConfigurationFragment @JvmOverloads constructor(
                 runOnDefaultDispatcher {
                     for (entity in profiles) {
                         ProfileManager.deleteProfile(entity.groupId, entity.id)
-                    }
-                    
-                    // Скрываем все лоадеры после завершения удаления
-                    onMainDispatcher {
-                        for (i in 0 until configurationListView.childCount) {
-                            val child = configurationListView.getChildAt(i)
-                            val holder = configurationListView.getChildViewHolder(child) as? ConfigurationHolder
-                            holder?.let {
-                                it.removeProgress.isVisible = false
-                                it.removeButton.isVisible = true
-                            }
-                        }
                     }
                 }
             }
@@ -1501,7 +1478,6 @@ class ConfigurationFragment @JvmOverloads constructor(
             val shareLayer: LinearLayout = view.findViewById(R.id.share_layer)
             val shareButton: ImageView = view.findViewById(R.id.shareIcon)
             val removeButton: ImageView = view.findViewById(R.id.remove)
-            val removeProgress: ProgressBar = view.findViewById(R.id.remove_progress)
 
             fun bind(proxyEntity: ProxyEntity, trafficData: TrafficData? = null) {
                 val pf = parentFragment as? ConfigurationFragment ?: return
@@ -1617,12 +1593,19 @@ class ConfigurationFragment @JvmOverloads constructor(
                 }
 
                 removeButton.setOnClickListener {
-                    // Показываем лоадер и блокируем кнопку
-                    removeButton.isVisible = false
-                    removeProgress.isVisible = true
-                    
                     adapter?.let {
                         val index = it.configurationIdList.indexOf(proxyEntity.id)
+                        val isSelectedProfile = (selectedItem?.id ?: DataStore.selectedProxy) == proxyEntity.id
+                        
+                        if (isSelectedProfile && it.configurationIdList.size > 1) {
+                            val newSelectedIndex = if (index == 0) 1 else 0
+                            configurationListView.post {
+                                val newSelectedHolder = layoutManager.findViewByPosition(newSelectedIndex)
+                                    ?.let { configurationListView.getChildViewHolder(it) } as? ConfigurationHolder
+                                newSelectedHolder?.view?.performClick()
+                            }
+                        }
+                        
                         it.remove(index)
                         undoManager.remove(index to proxyEntity)
                     }
@@ -1633,9 +1616,7 @@ class ConfigurationFragment @JvmOverloads constructor(
                 editButton.isGone = select
                 removeButton.isGone = select
                 
-                // Сбрасываем состояние лоадера
-                removeProgress.isVisible = false
-                removeButton.isVisible = true
+
 
                 proxyEntity.nekoBean?.apply {
                     shareLayout.isGone = true
