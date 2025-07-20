@@ -82,7 +82,7 @@ object ProfileManager {
         }
         profile.id = SagerDatabase.proxyDao.addProxy(profile)
         
-        if (autoSelect) {
+        if (autoSelect && !DataStore.serviceState.started) {
             val previousSelected = DataStore.selectedProxy
             DataStore.selectedProxy = profile.id
             if (previousSelected != profile.id) {

@@ -1039,7 +1039,7 @@ class ConfigurationFragment @JvmOverloads constructor(
             return LayoutProfileListBinding.inflate(inflater).root
         }
 
-        lateinit var undoManager: UndoSnackbarManager<ProxyEntity>
+        lateinit var undoManager: UndoSnackbarManager<RemoveAction>
         var adapter: ConfigurationAdapter? = null
 
         override fun onSaveInstanceState(outState: Bundle) {
@@ -1160,7 +1160,7 @@ class ConfigurationFragment @JvmOverloads constructor(
 
             if (!select) {
 
-                undoManager = UndoSnackbarManager(activity as MainActivity, adapter!!)
+                undoManager = UndoSnackbarManager<RemoveAction>(activity as MainActivity, adapter!!)
 
                 ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(
                     ItemTouchHelper.UP or ItemTouchHelper.DOWN, ItemTouchHelper.START
@@ -1215,10 +1215,16 @@ class ConfigurationFragment @JvmOverloads constructor(
             undoManager.flush()
         }
 
+        data class RemoveAction(
+            val index: Int,
+            val profile: ProxyEntity,
+            val wasSelected: Boolean
+        )
+
         inner class ConfigurationAdapter : RecyclerView.Adapter<ConfigurationHolder>(),
             ProfileManager.Listener,
             GroupManager.Listener,
-            UndoSnackbarManager.Interface<ProxyEntity> {
+            UndoSnackbarManager.Interface<RemoveAction> {
 
             init {
                 setHasStableIds(true)
@@ -1313,18 +1319,30 @@ class ConfigurationFragment @JvmOverloads constructor(
                 notifyItemRemoved(pos)
             }
 
-            override fun undo(actions: List<Pair<Int, ProxyEntity>>) {
-                for ((index, item) in actions) {
+            override fun undo(actions: List<Pair<Int, RemoveAction>>) {
+                for ((index, action) in actions) {
                     configurationListView.post {
-                        configurationList[item.id] = item
-                        configurationIdList.add(index, item.id)
+                        configurationList[action.profile.id] = action.profile
+                        configurationIdList.add(index, action.profile.id)
                         notifyItemInserted(index)
+                        
+                        if (action.wasSelected) {
+                            DataStore.selectedProxy = action.profile.id
+                            for (i in 0 until configurationListView.childCount) {
+                                val child = configurationListView.getChildAt(i)
+                                val holder = configurationListView.getChildViewHolder(child) as? ConfigurationHolder
+                                holder?.let {
+                                    val selected = DataStore.selectedProxy == it.entity.id
+                                    it.selectedView.visibility = if (selected) View.VISIBLE else View.INVISIBLE
+                                }
+                            }
+                        }
                     }
                 }
             }
 
-            override fun commit(actions: List<Pair<Int, ProxyEntity>>) {
-                val profiles = actions.map { it.second }
+            override fun commit(actions: List<Pair<Int, RemoveAction>>) {
+                val profiles = actions.map { it.second.profile }
                 runOnDefaultDispatcher {
                     for (entity in profiles) {
                         ProfileManager.deleteProfile(entity.groupId, entity.id)
@@ -1598,16 +1616,20 @@ class ConfigurationFragment @JvmOverloads constructor(
                         val isSelectedProfile = (selectedItem?.id ?: DataStore.selectedProxy) == proxyEntity.id
                         
                         if (isSelectedProfile && it.configurationIdList.size > 1) {
-                            val newSelectedIndex = if (index == 0) 1 else 0
-                            configurationListView.post {
-                                val newSelectedHolder = layoutManager.findViewByPosition(newSelectedIndex)
-                                    ?.let { configurationListView.getChildViewHolder(it) } as? ConfigurationHolder
-                                newSelectedHolder?.view?.performClick()
+                            if (!DataStore.serviceState.started) {
+                                val newSelectedIndex = if (index > 0) index - 1 else 0
+                                configurationListView.post {
+                                    val newSelectedHolder = layoutManager.findViewByPosition(newSelectedIndex)
+                                        ?.let { configurationListView.getChildViewHolder(it) } as? ConfigurationHolder
+                                    newSelectedHolder?.view?.performClick()
+                                }
                             }
                         }
                         
+                        val wasSelectedProfile = isSelectedProfile
+                        
                         it.remove(index)
-                        undoManager.remove(index to proxyEntity)
+                        undoManager.remove(Pair(index, RemoveAction(index, proxyEntity, wasSelectedProfile)))
                     }
                 }
 
