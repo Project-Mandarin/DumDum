@@ -97,6 +97,11 @@ class SagerNet : Application(),
                 .penaltyLog()
                 .build()
         )
+
+        // TMP: force replacement of example.com in 'DataStore.connectionTestURL'
+        if (DataStore.connectionTestURL == "http://example.com") {
+            DataStore.connectionTestURL = CONNECTION_TEST_URL
+        }
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
