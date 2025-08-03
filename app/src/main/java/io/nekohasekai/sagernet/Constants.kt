@@ -1,6 +1,6 @@
 package io.nekohasekai.sagernet
 
-const val CONNECTION_TEST_URL = "http://example.com"
+const val CONNECTION_TEST_URL = "http://check.dumdum.dev"
 
 object Key {
 

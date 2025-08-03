@@ -41,7 +41,7 @@
             app:key="bypassLan"
             app:title="@string/route_opt_bypass_lan" />
         <moe.matsuri.nb4a.ui.UrlTestPreference
-            app:defaultValue="http://example.com"
+            app:defaultValue="http://check.dumdum.dev"
             app:icon="@drawable/ic_baseline_cast_connected_24"
             app:key="connectionTestURL"
             app:title="@string/connection_test_url"
