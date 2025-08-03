@@ -1334,7 +1334,7 @@ class ConfigurationFragment @JvmOverloads constructor(
                                 val holder = configurationListView.getChildViewHolder(child) as? ConfigurationHolder
                                 holder?.let {
                                     val selected = DataStore.selectedProxy == it.entity.id
-                                    it.selectedView.visibility = if (selected) View.VISIBLE else View.INVISIBLE
+                                    it.selectedView.isChecked = selected
                                 }
                             }
                         }
