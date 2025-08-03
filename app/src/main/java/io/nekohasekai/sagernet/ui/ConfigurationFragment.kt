@@ -17,6 +17,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.RadioButton
 import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.widget.PopupMenu
@@ -1490,7 +1491,7 @@ class ConfigurationFragment @JvmOverloads constructor(
             val profileStatus: TextView = view.findViewById(R.id.profile_status)
 
             val trafficText: TextView = view.findViewById(R.id.traffic_text)
-            val selectedView: LinearLayout = view.findViewById(R.id.selected_view)
+            val selectedView: RadioButton = view.findViewById(R.id.selected_view)
             val editButton: ImageView = view.findViewById(R.id.edit)
             val shareLayout: LinearLayout = view.findViewById(R.id.share)
             val shareLayer: LinearLayout = view.findViewById(R.id.share_layer)
@@ -1516,7 +1517,7 @@ class ConfigurationFragment @JvmOverloads constructor(
                                 lastSelected = DataStore.selectedProxy
                                 DataStore.selectedProxy = proxyEntity.id
                                 onMainDispatcher {
-                                    selectedView.visibility = View.VISIBLE
+                                    selectedView.isChecked = true
                                 }
                             }
 
@@ -1651,7 +1652,7 @@ class ConfigurationFragment @JvmOverloads constructor(
                     onMainDispatcher {
                         editButton.isEnabled = !started
                         removeButton.isEnabled = !started
-                        selectedView.visibility = if (selected) View.VISIBLE else View.INVISIBLE
+                        selectedView.isChecked = selected
                     }
 
                     fun showShare(anchor: View) {
