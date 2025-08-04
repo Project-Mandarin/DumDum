@@ -574,4 +574,5 @@
     <string name="ip_address">IP Address</string>
     <string name="routes_settings">Routes Settings</string>
     <string name="log_size">Log buffer size (Kbyte)</string>
+    <string name="website">Website</string>
 </resources>

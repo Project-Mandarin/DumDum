@@ -62,6 +62,16 @@ class AboutFragment : ToolbarFragment(R.layout.layout_about) {
                         .build())
                     .addItem(
                         MaterialAboutActionItem.Builder()
+                        .icon(R.drawable.ic_baseline_home_24)
+                        .text(R.string.website)
+                        .setOnClickAction {
+                            requireContext().launchCustomTab(
+                                "https://dumdum.dev"
+                            )
+                        }
+                        .build())
+                    .addItem(
+                        MaterialAboutActionItem.Builder()
                         .icon(R.drawable.ic_action_description)
                         .text(R.string.github)
                         .setOnClickAction {
