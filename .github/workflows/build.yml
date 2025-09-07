@@ -12,51 +12,17 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
-env:
-  GO_VERSION: 1.24.2
-
 jobs:
-  libcore:
-    name: build libcore
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        with:
-          ref: ${{ github.head_ref }}
-
-      - name: Setup Go ${{ env.GO_VERSION }}
-        uses: actions/setup-go@v5
-        with:
-          go-version: ${{ env.GO_VERSION }}
-          cache-dependency-path: libcore/go.sum
-
-      - name: Build
-        run: ./run lib core
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: libcore
-          path: app/libs/libcore.aar
-
   dumdum:
-    name: build DumDum
+    name: build
     runs-on: ubuntu-latest
     container:
       image: cimg/android:2023.09-ndk
-    needs: libcore
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
-
-      - name: Download libcore
-        uses: actions/download-artifact@v4
-        with:
-          name: libcore
-          path: app/libs/libcore.aar
 
       - name: Build
         env:
