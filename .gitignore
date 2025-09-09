@@ -1,18 +1,13 @@
-*.iml
-.gradle
-.idea
-.vscode
 .DS_Store
-build/
-/captures
-local.properties
-/app/libs/
-/app/src/main/assets/sing-box
-/library/libcore_build/
-.idea/deploymentTargetDropDown.xml
-.kotlin
-*.keystore
-*.jks
+.gradle/
+.idea/
+.kotlin/
+.vscode
 
-# submodules
-/external
+app/libs/
+build/
+local.properties
+
+*.iml
+*.jks
+*.keystore
