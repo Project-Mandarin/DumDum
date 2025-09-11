@@ -232,15 +232,11 @@ class ConfigurationFragment @JvmOverloads constructor(
                     val last = layoutManager.findLastVisibleItemPosition()
 
                     if (selectedProfileIndex !in first..last) {
-                        fragment.configurationListView.scrollTo(selectedProfileIndex, true)
+                        fragment.configurationListView.scrollTo(selectedProfileIndex)
                         return@setOnClickListener
                     }
-
                 }
-
-                fragment.configurationListView.scrollTo(0)
             }
-
         }
 
         DataStore.profileCacheStore.registerChangeListener(this)
@@ -1467,9 +1463,9 @@ class ConfigurationFragment @JvmOverloads constructor(
                     notifyDataSetChanged()
 
                     if (selectedProfileIndex != -1) {
-                        configurationListView.scrollTo(selectedProfileIndex, true)
+                        configurationListView.scrollTo(selectedProfileIndex)
                     } else if (newProfiles.isNotEmpty()) {
-                        configurationListView.scrollTo(0, true)
+                        configurationListView.scrollTo(0)
                     }
 
                 }

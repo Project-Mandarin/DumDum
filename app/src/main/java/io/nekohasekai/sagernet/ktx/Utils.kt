@@ -173,24 +173,8 @@ fun String.unUrlSafe(): String {
     return NGUtil.urlDecode(this)
 }
 
-fun RecyclerView.scrollTo(index: Int, force: Boolean = false) {
-    if (force) post {
-        scrollToPosition(index)
-    }
-    postDelayed({
-        try {
-            layoutManager?.startSmoothScroll(object : LinearSmoothScroller(context) {
-                init {
-                    targetPosition = index
-                }
-
-                override fun getVerticalSnapPreference(): Int {
-                    return SNAP_TO_START
-                }
-            })
-        } catch (ignored: IllegalArgumentException) {
-        }
-    }, 300L)
+fun RecyclerView.scrollTo(index: Int) {
+    post { scrollToPosition(index) }
 }
 
 val app get() = SagerNet.application
