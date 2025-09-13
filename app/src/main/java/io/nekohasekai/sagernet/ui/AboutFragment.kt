@@ -39,7 +39,7 @@ class AboutFragment : ToolbarFragment(R.layout.layout_about) {
 
         override fun getMaterialAboutList(activityContext: Context): MaterialAboutList {
 
-            var versionName = "${BuildConfig.VERSION_NAME} (${BuildConfig.FLAVOR} ${BuildConfig.GIT_COMMIT} ${BuildConfig.BUILD_TIME})"
+            var versionName = "${BuildConfig.VERSION_NAME} (${BuildConfig.FLAVOR} ${BuildConfig.GIT_COMMIT})"
 
             if (BuildConfig.DEBUG) {
                 versionName += " DEBUG"

@@ -257,7 +257,6 @@ fun Project.setupApp() {
             applicationId = pkgName
             versionCode = verCode
             versionName = verName
-            buildConfigField("String", "BUILD_TIME", "\"${LocalDate.now(systemUTC())}\"")
             buildConfigField("String", "GIT_COMMIT", "\"$gitCommit\"")
         }
     }
