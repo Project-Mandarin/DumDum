@@ -7,6 +7,7 @@ on:
   pull_request:
     paths-ignore:
       - 'README.md'
+      - 'metadata/**'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
