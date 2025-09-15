@@ -1,9 +1,12 @@
+<p align="center"><img src="/metadata/en-US/images/logo.png"></p>
 <p align="center"><img src="https://img.shields.io/github/downloads/Project-Mandarin/DumDum/total?style=flat-square&logo=betfair&logoColor=white&label=Downloads"></p>
 
 # DumDum<sub><sup>[^1]</sup></sub>
 Designed as a simple, minimalistic & universal client for connecting to **SOCKS/HTTP/HTTPS** proxies.
 
-<p align="center"><img src="https://www.dropbox.com/scl/fi/xolqv1ghemjmjt93tkyhp/dumdum.gif?rlkey=81l3q6omxp930wofy518bs6c7&st=sahbyzlm&raw=1"></p>
+[<img src="/metadata/en-US/images/phoneScreenshots/1.png" width="250">](/metadata/en-US/images/phoneScreenshots/1.png)
+[<img src="/metadata/en-US/images/phoneScreenshots/3.png" width="250">](/metadata/en-US/images/phoneScreenshots/3.png)
+[<img src="/metadata/en-US/images/phoneScreenshots/4.png" width="250">](/metadata/en-US/images/phoneScreenshots/4.png)
 
 ## Requirements
 
