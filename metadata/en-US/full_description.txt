@@ -1,0 +1,1 @@
+Designed as a simple, minimalistic & universal client for connecting to <b>SOCKS/HTTP/HTTPS</b> proxies and based on VpnService.
