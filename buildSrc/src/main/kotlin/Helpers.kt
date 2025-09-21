@@ -6,8 +6,6 @@ import java.net.http.HttpClient
 import java.net.http.HttpRequest
 import java.net.http.HttpResponse
 import java.net.URI
-import java.time.Clock.systemUTC
-import java.time.LocalDate
 import java.util.Base64
 import java.util.Properties
 import kotlin.system.exitProcess
@@ -224,6 +222,10 @@ fun Project.setupAppCommon() {
             }
         } else if (requireFlavor().contains("(GitHub|Expert|Play)Release".toRegex())) {
             exitProcess(0)
+        }
+        dependenciesInfo {
+            includeInApk = false
+            includeInBundle = false
         }
         buildTypes {
             val key = signingConfigs.findByName("release")
