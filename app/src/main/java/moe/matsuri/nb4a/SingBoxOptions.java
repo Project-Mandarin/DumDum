@@ -47,8 +47,6 @@ public class SingBoxOptions {
 
         public String external_controller;
 
-        public String external_ui;
-
         public String external_ui_download_url;
 
         public String external_ui_download_detour;
