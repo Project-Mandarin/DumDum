@@ -1,15 +1,9 @@
 import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.gradle.AbstractAppExtension
 import com.android.build.gradle.internal.api.BaseVariantOutputImpl
-import java.io.File
-import java.net.http.HttpClient
-import java.net.http.HttpRequest
-import java.net.http.HttpResponse
-import java.net.URI
 import java.util.Base64
 import java.util.Properties
 import kotlin.system.exitProcess
-import org.apache.commons.codec.digest.DigestUtils
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
 import org.gradle.api.plugins.ExtensionAware
@@ -21,65 +15,6 @@ private val Project.android get() = extensions.getByName<ApplicationExtension>("
 private lateinit var metadata: Properties
 private lateinit var localProperties: Properties
 private lateinit var flavor: String
-
-fun Project.downloadLibcore() {
-    afterEvaluate {
-        tasks.names.forEach { taskName ->
-            if (taskName.contains("compile")) {
-                tasks.named(taskName) { dependsOn("downloadLibcore") }
-            }
-        }
-    }
-
-    fun verifyChecksum(file: File): Boolean {
-        val currentMD5 = file.inputStream().use { DigestUtils.md5Hex(it) }
-
-        if (currentMD5 != requireMetadata().getProperty("LIBCORE_MD5")) {
-            throw org.gradle.api.GradleException("Failed to verify libcore.aar MD5 checksum!")
-        } else {
-            return true
-        }
-    }
-
-    tasks.create("downloadLibcore") {
-        doLast {
-            val libcoreRepo = requireMetadata().getProperty("LIBCORE_REPO")
-            val libcoreVersion = requireMetadata().getProperty("LIBCORE_VERSION")
-            val libcoreUrl = "$libcoreRepo/releases/download/$libcoreVersion/libcore-$libcoreVersion.aar"
-            val libcoreFile = File(projectDir, "libs/libcore.aar").apply {
-                parentFile.mkdirs()
-            }
-
-            if (libcoreFile.exists()) {
-                if (verifyChecksum(libcoreFile)) {
-                    logger.lifecycle("${libcoreFile.absolutePath} already exists")
-                    return@doLast
-                }
-            }
-
-            try {
-                val client = HttpClient.newBuilder()
-                    .followRedirects(HttpClient.Redirect.NORMAL)
-                    .build()
-                val response = client.send(
-                    HttpRequest.newBuilder().uri(URI.create(libcoreUrl)).build(),
-                    HttpResponse.BodyHandlers.ofInputStream()
-                )
-
-                if (response.statusCode() == 200) {
-                    response.body().use { input ->
-                        libcoreFile.outputStream().use { input.copyTo(it) }
-                    }
-                    verifyChecksum(libcoreFile)
-                } else {
-                    throw org.gradle.api.GradleException("Failed to download $libcoreUrl (${response.statusCode()})")
-                }
-            } catch (e: Exception) {
-                throw org.gradle.api.GradleException("Failed to download libcore: ${e.message}", e)
-            }
-        }
-    }
-}
 
 fun Project.requireFlavor(): String {
     if (::flavor.isInitialized) return flavor
@@ -262,7 +197,6 @@ fun Project.setupApp() {
             buildConfigField("String", "GIT_COMMIT", "\"$gitCommit\"")
         }
     }
-    downloadLibcore()
     setupAppCommon()
 
     android.apply {
