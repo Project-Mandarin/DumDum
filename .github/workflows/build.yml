@@ -13,9 +13,12 @@ concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+env:
+  GO_VERSION: 1.24.2
+
 jobs:
-  dumdum:
-    name: build
+  libcore:
+    name: build libcore
     runs-on: ubuntu-latest
     container:
       image: cimg/android:2023.09-ndk
@@ -24,8 +27,42 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
+          submodules: recursive
 
-      - name: Build
+      - name: Setup Go ${{ env.GO_VERSION }}
+        uses: actions/setup-go@v5
+        with:
+          go-version: ${{ env.GO_VERSION }}
+          cache-dependency-path: ./libcore/go.sum
+
+      - name: Build libcore
+        run: bash -x ./libcore/scripts/build.sh
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: libcore
+          path: ./libcore/libcore.aar
+
+  dumdum:
+    name: build dumdum
+    runs-on: ubuntu-latest
+    container:
+      image: cimg/android:2023.09-ndk
+    needs: libcore
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Download libcore
+        uses: actions/download-artifact@v4
+        with:
+          name: libcore
+          path: ./app/libs/libcore.aar
+
+      - name: Build DumDum
         env:
           ALIAS_NAME: dumdum
           ALIAS_PASS: "${{ secrets.JKS_PASS }}"
@@ -40,4 +77,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: "DumDum-${{ github.run_number }}"
-          path: app/build/outputs/apk/github/release/*.apk
+          path: ./app/build/outputs/apk/github/release/*.apk
