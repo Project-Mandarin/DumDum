@@ -14,20 +14,39 @@ concurrency:
   cancel-in-progress: true
 
 env:
+  JAVA_VERSION: 17
   GO_VERSION: 1.24.2
+#NDK_VERSION: 25.2.9519653
+#BUILD_TOOLS_VERSION: 35.0.1
 
 jobs:
   build:
     name: build
     runs-on: ubuntu-24.04
-    container:
-      image: cimg/android:2023.09-ndk
+#    container:
+#      image: cimg/android:2023.09-ndk
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
           submodules: recursive
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+        with:
+          packages: "ndk;25.2.9519653 platforms;android-35 build-tools;35.0.1"
+          log-accepted-android-sdk-licenses: false
+
+      - run: java -version
+      - run: cmake -version
+      - run: env | sort
 
       - name: Setup Go ${{ env.GO_VERSION }}
         uses: actions/setup-go@v5
