@@ -14,23 +14,45 @@ concurrency:
   cancel-in-progress: true
 
 env:
+  ANDROID_NDK_VERSION: 25.2.9519653
+  ANDROID_SDK_VERSION: 35
+  BUILD_TOOLS_VERSION: 35.0.1
   GO_VERSION: 1.24.2
+  JAVA_VERSION: 17
 
 jobs:
   build:
     name: build
-    runs-on: ubuntu-latest
-    container:
-      image: cimg/android:2023.09-ndk
+    runs-on: ubuntu-24.04
+    env:
+      ANDROID_NDK: /usr/local/lib/android/sdk/ndk/25.2.9519653
+      ANDROID_NDK_HOME: /usr/local/lib/android/sdk/ndk/25.2.9519653
+      ANDROID_NDK_LATEST_HOME: /usr/local/lib/android/sdk/ndk/25.2.9519653
+      ANDROID_NDK_ROOT: /usr/local/lib/android/sdk/ndk/25.2.9519653
     steps:
+      - name: Delete pre-installed Android NDK
+        run: rm -rf /usr/local/lib/android/sdk/ndk/
+
       - name: Checkout
         uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
           submodules: recursive
 
-      - name: Setup Go ${{ env.GO_VERSION }}
-        uses: actions/setup-go@v5
+      - name: Set up Java
+        uses: actions/setup-java@v5
+        with:
+          java-version: ${{ env.JAVA_VERSION }}
+          distribution: temurin
+
+      - name: Setup Android tools
+        uses: android-actions/setup-android@v3
+        with:
+          packages: ndk;${{ env.ANDROID_NDK_VERSION }} platforms;android-${{ env.ANDROID_SDK_VERSION }} build-tools;${{ env.BUILD_TOOLS_VERSION }}
+          log-accepted-android-sdk-licenses: false
+
+      - name: Setup Go
+        uses: actions/setup-go@v6
         with:
           go-version: ${{ env.GO_VERSION }}
           cache-dependency-path: ./libcore/go.sum
@@ -41,8 +63,8 @@ jobs:
       - name: Build DumDum
         env:
           ALIAS_NAME: dumdum
-          ALIAS_PASS: "${{ secrets.JKS_PASS }}"
-          KEYSTORE_PASS: "${{ secrets.JKS_PASS }}"
+          ALIAS_PASS: ${{ secrets.JKS_PASS }}
+          KEYSTORE_PASS: ${{ secrets.JKS_PASS }}
         run: |
           echo "sdk.dir=${ANDROID_SDK_ROOT}" > local.properties
           echo "ndk.dir=${ANDROID_NDK_ROOT}" >> local.properties
@@ -54,5 +76,5 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: "DumDum-${{ github.run_number }}"
+          name: DumDum-${{ github.run_number }}
           path: ./app/build/outputs/apk/github/release/*.apk
