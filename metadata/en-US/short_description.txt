@@ -1,1 +1,1 @@
-Simple client for SOCKS/HTTP/HTTPS proxies
+Simple VPN over SOCKS/HTTP/HTTPS proxy

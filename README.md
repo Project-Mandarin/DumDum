@@ -14,7 +14,7 @@ Designed as a simple, minimalistic & universal client for connecting to **SOCKS/
 Android 8+ • Multi-architecture support[^2]
 
 ### Build
-Android NDK r25 • Android SDK 35 • CMake 3.22 • Go 1.24 • Java 17
+Android NDK r25c • Android SDK 35 • Go 1.24 • Java 17
 
 ## Support Us
 [Wiki](https://github.com/Project-Mandarin/DumDum/wiki/Support-Us)
