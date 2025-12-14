@@ -1,5 +1,9 @@
 <p align="center"><img src="/metadata/en-US/images/logo.png"></p>
 <p align="center"><img src="https://img.shields.io/github/downloads/Project-Mandarin/DumDum/total?style=flat-square&logo=betfair&logoColor=white&label=Downloads"></p>
+<p align="center">
+  <a href="https://f-droid.org/packages/app.dumdum/"><img alt="Get it on F-Droid" src="/metadata/en-US/images/get-it-on-f-droid.png" width="200"></a>
+  <a href="https://github.com/Project-Mandarin/DumDum/releases"><img alt="Get it on GitHub" src="/metadata/en-US/images/get-it-on-github.png" width="200"></a>
+</p>
 
 # DumDum<sub><sup>[^1]</sup></sub>
 Designed as a simple, minimalistic & universal client for connecting to **SOCKS/HTTP/HTTPS** proxies.
