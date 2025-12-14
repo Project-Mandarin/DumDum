@@ -237,9 +237,5 @@ fun Project.setupApp() {
                 dependsOn("assembleFdroidRelease")
             }
         }
-
-        sourceSets.getByName("main").apply {
-            jniLibs.srcDir("executableSo")
-        }
     }
 }
