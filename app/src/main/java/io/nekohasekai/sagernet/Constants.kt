@@ -148,7 +148,6 @@ object Key {
     //
 
     const val APP_TLS_VERSION = "appTLSVersion"
-    const val ENABLE_CLASH_API = "enableClashAPI"
     const val BATTERY_OPTIMIZATIONS = "batteryOptimizations"
 }
 

@@ -107,10 +107,6 @@
 
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-
-                <data
-                    android:host="install-config"
-                    android:scheme="clash" />
             </intent-filter>
 
             <intent-filter android:label="@string/profile_import">

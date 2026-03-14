@@ -157,18 +157,6 @@ fun buildConfig(
     }
 
     return MyOptions().apply {
-        if (!forTest && DataStore.enableClashAPI) experimental = ExperimentalOptions().apply {
-            clash_api = ClashAPIOptions().apply {
-                external_controller = "127.0.0.1:9090"
-            }
-
-            cache_file = CacheFile().apply {
-                enabled = true
-                store_fakeip = true
-                path = "../cache/clash.db"
-            }
-        }
-
         log = LogOptions().apply {
             level = when (DataStore.logLevel) {
                 0 -> "panic"

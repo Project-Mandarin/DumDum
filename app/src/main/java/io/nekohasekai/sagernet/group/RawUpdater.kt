@@ -216,8 +216,6 @@ object RawUpdater : GroupUpdater() {
 
         if (text.contains("proxies:")) {
 
-            // clash & meta
-
             try {
 
                 val yaml = Yaml().apply {
@@ -284,7 +282,7 @@ object RawUpdater : GroupUpdater() {
                                 serverAddress = proxy["server"] as String
                                 serverPort = proxy["port"].toString().toInt()
                                 password = proxy["password"]?.toString()
-                                method = clashCipher(proxy["cipher"] as String)
+                                method = proxy["cipher"] as String
                                 plugin = ssPlugin.joinToString(";")
                                 name = proxy["name"]?.toString()
                             })
@@ -295,7 +293,7 @@ object RawUpdater : GroupUpdater() {
                                 "vmess" -> VMessBean()
                                 "vless" -> VMessBean().apply {
                                     alterId = -1 // make it VLESS
-                                    packetEncoding = 2 // clash meta default XUDP
+                                    packetEncoding = 2 // XUDP
                                 }
 
                                 "trojan" -> TrojanBean().apply {
@@ -687,13 +685,6 @@ object RawUpdater : GroupUpdater() {
         }
 
         return null
-    }
-
-    fun clashCipher(cipher: String): String {
-        return when (cipher) {
-            "dummy" -> "none"
-            else -> cipher
-        }
     }
 
     fun parseWireGuard(conf: String): List<WireGuardBean> {

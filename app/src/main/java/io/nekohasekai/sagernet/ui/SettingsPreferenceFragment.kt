@@ -83,12 +83,6 @@ class SettingsPreferenceFragment : PreferenceFragmentCompat() {
         }
 
         val resolveDestination = findPreference<SwitchPreference>(Key.RESOLVE_DESTINATION)!!
-        val enableClashAPI = findPreference<SwitchPreference>(Key.ENABLE_CLASH_API)!!
-        enableClashAPI.setOnPreferenceChangeListener { _, newValue ->
-            (activity as MainActivity?)?.refreshNavMenu(newValue as Boolean)
-            needReload()
-            true
-        }
 
         mixedPort.onPreferenceChangeListener = reloadListener
         appendHttpProxy.onPreferenceChangeListener = reloadListener

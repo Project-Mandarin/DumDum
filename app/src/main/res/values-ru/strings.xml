@@ -129,7 +129,6 @@
     <string name="empty_route">Пустой маршрут</string>
     <string name="empty_route_notice">Установите какие-либо правила перед сохранением</string>
     <string name="enable">Включить</string>
-    <string name="enable_clash_api">Включить Clash API</string>
     <string name="enable_dns_routing">Включить маршрутизацию DNS</string>
     <string name="enable_ech">Включить ECH</string>
     <string name="enable_ech_sum">Включить зашифрованный клиент Hello</string>

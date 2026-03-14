@@ -43,22 +43,6 @@ public class SingBoxOptions {
 
     // paste generate output here
 
-    public static class ClashAPIOptions extends SingBoxOption {
-
-        public String external_controller;
-
-        public String external_ui_download_url;
-
-        public String external_ui_download_detour;
-
-        public String secret;
-
-        public String default_mode;
-
-        // Generate note: option type:  public List<String> ModeList;
-
-    }
-
     public static class SelectorOutboundOptions extends SingBoxOption {
 
         public List<String> outbounds;
@@ -288,8 +272,6 @@ public class SingBoxOptions {
     }
 
     public static class ExperimentalOptions extends SingBoxOption {
-
-        public ClashAPIOptions clash_api;
 
         public V2RayAPIOptions v2ray_api;
 
@@ -1071,8 +1053,6 @@ public class SingBoxOptions {
         // Generate note: Listable
         public List<Integer> user_id;
 
-        public String clash_mode;
-
         public Boolean invert;
 
         public String outbound;
@@ -1156,8 +1136,6 @@ public class SingBoxOptions {
 
         // Generate note: Listable
         public List<String> outbound;
-
-        public String clash_mode;
 
         public Boolean invert;
 
@@ -4368,8 +4346,6 @@ public class SingBoxOptions {
         // Generate note: Listable
         public List<Integer> user_id;
 
-        public String clash_mode;
-
         public Boolean invert;
 
         public String action;
@@ -4443,8 +4419,6 @@ public class SingBoxOptions {
 
         // Generate note: Listable
         public List<String> outbound;
-
-        public String clash_mode;
 
         public Boolean invert;
 

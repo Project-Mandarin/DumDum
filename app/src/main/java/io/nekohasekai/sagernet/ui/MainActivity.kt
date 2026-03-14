@@ -101,8 +101,6 @@ class MainActivity : ThemedActivity(),
             onNewIntent(intent)
         }
 
-        refreshNavMenu(DataStore.enableClashAPI)
-
         // sdk 33 notification
         if (Build.VERSION.SDK_INT >= 33) {
             val checkPermission =
@@ -116,19 +114,13 @@ class MainActivity : ThemedActivity(),
         }
     }
 
-    fun refreshNavMenu(clashApi: Boolean) {
-        if (::navigation.isInitialized) {
-            navigation.menu.findItem(R.id.nav_tuiguang)?.isVisible = false
-        }
-    }
-
     override fun onNewIntent(intent: Intent) {
         super.onNewIntent(intent)
 
         val uri = intent.data ?: return
 
         runOnDefaultDispatcher {
-            if (uri.scheme == "sn" && uri.host == "subscription" || uri.scheme == "clash") {
+            if (uri.scheme == "sn" && uri.host == "subscription") {
                 importSubscription(uri)
             } else {
                 importProfile(uri)
@@ -365,7 +357,6 @@ class MainActivity : ThemedActivity(),
             if (binding.fab.isShown) {
                 anchorView = binding.fab
             }
-            // TODO
         }
     }
 

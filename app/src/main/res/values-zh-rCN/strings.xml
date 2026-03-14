@@ -445,7 +445,6 @@
     <string name="is_outbound_only">设置的 JSON 是出站</string>
     <string name="save">保存</string>
     <string name="set_panel_url">设置面板 URL</string>
-    <string name="enable_clash_api">启用 Clash API</string>
     <string name="xtls_flow">Flow（VLESS 子协议）</string>
     <string name="log_level">日志级别</string>
     <string name="ads">推广</string>

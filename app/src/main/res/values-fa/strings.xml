@@ -485,7 +485,6 @@
     <string name="is_outbound_only">مجموعه JSON برای خروجی است</string>
     <string name="save">ذخیره</string>
     <string name="set_panel_url">تعیین لینک صفحه</string>
-    <string name="enable_clash_api">فعال کردن Clash API</string>
     <string name="log_level">سطح ثبت آمار</string>
     <string name="xtls_flow">Flow (VLESS دستورالعمل فرعی)</string>
     <string name="ads">تبلیغات</string>

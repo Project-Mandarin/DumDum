@@ -523,9 +523,7 @@
     <string name="is_outbound_only">The JSON set is outbound</string>
     <string name="save">Save</string>
     <string name="set_panel_url">Set panel URL</string>
-    <string name="enable_clash_api">Enable Clash API</string>
     <string name="log_level">Log Level</string>
-    <string name="enable_clash_api_summary">Provide clash api at 127.0.0.1:9090</string>
     <string name="xtls_flow">Flow (VLESS Sub-protocol)</string>
     <string name="ads">Ads</string>
     <string name="bypass_lan_in_core">Bypass LAN in Core</string>
