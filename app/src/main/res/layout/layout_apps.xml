@@ -60,6 +60,7 @@
 
                             <com.google.android.material.chip.Chip
                                 android:id="@+id/appProxyModeDisable"
+                                style="@style/Widget.MaterialComponents.Chip.Filter"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:minWidth="10dp"
@@ -75,6 +76,7 @@
 
                             <com.google.android.material.chip.Chip
                                 android:id="@+id/appProxyModeOn"
+                                style="@style/Widget.MaterialComponents.Chip.Filter"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:minWidth="80dp"
@@ -86,6 +88,7 @@
 
                             <com.google.android.material.chip.Chip
                                 android:id="@+id/appProxyModeBypass"
+                                style="@style/Widget.MaterialComponents.Chip.Filter"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:checked="true"
