@@ -21,6 +21,7 @@ import io.nekohasekai.sagernet.ktx.stringSet
 import io.nekohasekai.sagernet.ktx.stringToInt
 import io.nekohasekai.sagernet.ktx.stringToIntIfExists
 import moe.matsuri.nb4a.TempDatabase
+import moe.matsuri.nb4a.utils.Util
 
 object DataStore : OnPreferenceDataStoreChangeListener {
 
@@ -95,6 +96,10 @@ object DataStore : OnPreferenceDataStoreChangeListener {
     var nightTheme by configurationStore.stringToInt(Key.NIGHT_THEME) { 1 }
     var serviceMode by configurationStore.string(Key.SERVICE_MODE) { Key.MODE_VPN }
 
+    var mixedPort by configurationStore.stringToInt(Key.MIXED_PORT) { 2080 }
+    var mixedUsername by configurationStore.string(Key.MIXED_USERNAME) { "User" }
+    var mixedPassword by configurationStore.string(Key.MIXED_PASSWORD) { Util.generateCryptoSecurePassword() }
+
     var trafficSniffing by configurationStore.stringToInt(Key.TRAFFIC_SNIFFING) { 1 }
     var resolveDestination by configurationStore.boolean(Key.RESOLVE_DESTINATION)
 
@@ -119,13 +124,10 @@ object DataStore : OnPreferenceDataStoreChangeListener {
 
     // hopefully hashCode = mHandle doesn't change, currently this is true from KitKat to Nougat
     private val userIndex by lazy { Binder.getCallingUserHandle().hashCode() }
-    var mixedPort: Int
-        get() = getLocalPort(Key.MIXED_PORT, 2080)
-        set(value) = saveLocalPort(Key.MIXED_PORT, value)
 
     fun initGlobal() {
-        if (configurationStore.getString(Key.MIXED_PORT) == null) {
-            mixedPort = mixedPort
+        if (configurationStore.getString(Key.MIXED_PASSWORD) == null) {
+            mixedPassword = Util.generateCryptoSecurePassword()
         }
     }
 
