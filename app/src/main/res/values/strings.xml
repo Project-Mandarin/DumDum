@@ -15,7 +15,7 @@
     <string name="menu_about">About</string>
     <string name="theme">Theme</string>
     <string name="document">Document</string>
-    <string name="group_default">Ungrouped</string>
+    <string name="group_default">&lt; / &gt;</string>
     <string name="quick_toggle">Toggle</string>
     <string name="tile_title" translatable="false">DumDum</string>
     <string name="menu_traffic">Traffic</string>
@@ -24,8 +24,8 @@
     <string name="action_open">Open</string>
     <!-- group -->
     <string name="group_name">Group name</string>
-    <string name="group_update">Update</string>
-    <string name="group_subscription_link">Subscription Link</string>
+    <string name="group_update">Sync</string>
+    <string name="group_subscription_link">Subscription URL</string>
     <string name="group_name_required">Group name required</string>
     <string name="group_create">Create group</string>
     <string name="group_create_subscription">Create subscription</string>
@@ -35,12 +35,11 @@
     <string name="group_status_empty">Empty group</string>
     <string name="group_status_empty_subscription">Not updated yet</string>
     <string name="group_status_proxies">%d Proxies</string>
-    <string name="group_status_proxies_subscription">%d Proxies | Updated on %s</string>
-    <string name="group_no_difference">%s: No difference</string>
-    <string name="group_updated">%s: Updated %d proxies</string>
+    <string name="group_status_proxies_subscription">%d connections | Last sync: %s</string>
+    <string name="group_no_difference">%s: Already up to date</string>
+    <string name="group_updated">%s: Updated %d connections</string>
     <string name="group_show_diff">Diff</string>
     <string name="group_diff">Diff (%s)</string>
-    <string name="group_delete_confirm_prompt">Are you sure you want to remove this group?</string>
     <string name="group_added">Added: \n%s</string>
     <string name="group_changed">Updated: \n%s</string>
     <string name="group_deleted">Deleted: \n%s</string>
@@ -137,7 +136,7 @@
     <string name="metered_summary">Hint system to treat VPN as metered</string>
     <string name="menu_route">Routes</string>
     <string name="route_add">Create Route</string>
-    <string name="delete_route_prompt">Are you sure you want to remove this route?</string>
+    <string name="delete_route_prompt">Are you sure to remove this route?</string>
     <string name="route_name">Route Name</string>
     <string name="route_proxy">proxy</string>
     <string name="route_bypass">bypass</string>
@@ -249,7 +248,7 @@
     <!-- profile -->
     <string name="profile_config">Connection config</string>
     <string name="delete">Remove</string>
-    <string name="delete_confirm_prompt">Are you sure you want to remove this profile?</string>
+    <string name="delete_confirm_prompt">Are you sure to remove this connection?</string>
     <string name="share_qr_nfc">QR code</string>
     <string name="add_profile_methods_scan_qr_code">Scan QR code</string>
     <string name="add_profile_methods_manual_settings">Manual Settings</string>
@@ -276,7 +275,7 @@
     <string name="no_proxies_found">No proxies found in the link</string>
     <string name="no_proxies_found_in_subscription">No proxies found in the subscription</string>
     <string name="no_proxies_found_in_file">No proxies found in the file</string>
-    <string name="no_proxies_found_in_clipboard">No proxies found in the clipboard</string>
+    <string name="no_proxies_found_in_clipboard">No correct configs found in the clipboard</string>
     <string name="deduplication">Deduplication</string>
     <string name="support_us">Support Us</string>
     <string name="support_us_summary">Support our development and future updates. We are open to crypto donations.</string>
@@ -344,7 +343,7 @@
     <string name="subscription_settings">Subscription Settings</string>
     <string name="group_type">Group Type</string>
     <string name="subscription_type">Subscription Type</string>
-    <string name="delete_group_prompt">Are you sure you want to remove this group?</string>
+    <string name="delete_group_prompt">Are you sure to remove this group?</string>
     <string name="force_resolve">Force Resolve</string>
     <string name="force_resolve_sum">Resolve all domain names to IP addresses when updating. Host
         and SNI will be automatically appended if possible</string>
@@ -379,7 +378,7 @@
     <string name="subscription_used">%s Used</string>
     <string name="subscription_traffic">%s Used / %s Remaining</string>
     <string name="subscription_expire">Expire: %s</string>
-    <string name="subscription_import">Import subscription</string>
+    <string name="subscription_import">Do you want to add a Subscription?</string>
     <string name="subscription_import_message">Confirm you want to import subscription %s? If you
         are coming from an untrusted source, doing this may result in your IP and this behavior
         being leaked.</string>
