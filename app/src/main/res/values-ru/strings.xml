@@ -105,9 +105,9 @@
     <string name="deduplication">Дедупликация</string>
     <string name="deduplication_sum">Удалить повторяющиеся конфигурации при обновлении</string>
     <string name="delete">Удалить</string>
-    <string name="delete_confirm_prompt">Вы уверены, что хотите удалить этот профиль?</string>
-    <string name="delete_group_prompt">Вы уверены, что хотите удалить эту группу?</string>
-    <string name="delete_route_prompt">Вы уверены, что хотите удалить этот маршрут?</string>
+    <string name="delete_confirm_prompt">Вы уверены, что хотите удалить подключение?</string>
+    <string name="delete_group_prompt">Вы уверены, что хотите удалить подписку?</string>
+    <string name="delete_route_prompt">Вы уверены, что хотите удалить маршрут?</string>
     <string name="direct_boot_aware">Разрешить переключение на экране блокировки</string>
     <string name="direct_boot_aware_summary">Выбранная вами информация профиля будет менее защищена</string>
     <string name="direct_dns">Прямой DNS</string>
@@ -154,19 +154,18 @@
     <string name="generating">Создание…</string>
     <string name="github">Исходный код</string>
     <string name="global_allow_insecure">Игнорировать SSL-сертификат прокси</string>
-    <string name="group_added">"\"Создано: 
+    <string name="group_added">"\"Создано:
     %s\""</string>
     <string name="group_basic">Базовый</string>
-    <string name="group_changed">"\"Обновлено: 
+    <string name="group_changed">"\"Обновлено:
     %s\""</string>
     <string name="group_create">Создать группу</string>
     <string name="group_create_subscription">Создать подписку</string>
-    <string name="group_default">Разгруппировано</string>
-    <string name="group_delete_confirm_prompt">Вы уверены, что хотите удалить эту группу?</string>
-    <string name="group_deleted">"\"Удалено: 
+    <string name="group_default">&lt; / &gt;</string>
+    <string name="group_deleted">"\"Удалено:
     %s\""</string>
     <string name="group_diff">различия (%s)</string>
-    <string name="group_duplicate">"\"Дубликат: 
+    <string name="group_duplicate">"\"Дубликат:
     %s\""</string>
     <string name="group_edit">Редактировать группу</string>
     <string name="group_edit_subscription">Редактировать подписку</string>
@@ -184,11 +183,11 @@
     <string name="group_status_empty">Пустая группа</string>
     <string name="group_status_empty_subscription">Еще не обновлено</string>
     <string name="group_status_proxies">%d прокси</string>
-    <string name="group_status_proxies_subscription" formatted="false">%d Прокси | Обновлено %s</string>
+    <string name="group_status_proxies_subscription" formatted="false">%d подключения(-ий) | синхр.: %s</string>
     <string name="group_subscription_link">Ссылка для подписки</string>
     <string name="group_type">Тип группы</string>
-    <string name="group_update">Обновить</string>
-    <string name="group_updated" formatted="false">%s: Обновлено %d прокси</string>
+    <string name="group_update">Синхр.</string>
+    <string name="group_updated" formatted="false">%s: обновлено %d подключения(-ий)</string>
     <string name="grpc_service_name">Имя службы gRPC</string>
     <string name="header_type">Тип заголовка</string>
     <string name="http_host">HTTP-хост</string>
@@ -254,8 +253,8 @@
     <string name="mux_sum">Протокол мультиплексирования предназначен для уменьшения задержки соединения TCP, а не для увеличения пропускной способности. Использование мультиплексирования для просмотра видео, загрузки или проверки скорости обычно неэффективно. Если сервер не поддерживает мультиплексирование, вы не сможете получить доступ к Интернету.</string>
     <string name="mux_type">Протокол мультиплексирования</string>
     <string name="naive_insecure_concurrency">Небезопасный параллелизм</string>
-    <string name="naive_insecure_concurrency_summary">"\"Использовать N параллельных соединений для повышения отказоустойчивости в условиях ненадёжной сети. Большее число соединений увеличивает риск обнаружения туннелей и снижает безопасность. Этот проект стремится к максимальной защите от анализа трафика, следовательно, использование его небезопасным образом противоречит данной цели. 
-     
+    <string name="naive_insecure_concurrency_summary">"\"Использовать N параллельных соединений для повышения отказоустойчивости в условиях ненадёжной сети. Большее число соединений увеличивает риск обнаружения туннелей и снижает безопасность. Этот проект стремится к максимальной защите от анализа трафика, следовательно, использование его небезопасным образом противоречит данной цели.
+
     Если придётся использовать данную функцию, попробуйте N=2, чтобы проверить, решит ли это проблему. Настоятельно не рекомендуется использовать более 4 соединений.\""</string>
     <string name="need_reload">Перезагрузите прокси-сервис, чтобы применить изменения</string>
     <string name="need_restart">Перезапустите приложение для применения изменений</string>
@@ -264,7 +263,7 @@
     <string name="night_mode">Ночной режим</string>
     <string name="no">Нет</string>
     <string name="no_proxies_found">В ссылке не найдено прокси-серверов</string>
-    <string name="no_proxies_found_in_clipboard">В буфере обмена не найдено ни одного прокси</string>
+    <string name="no_proxies_found_in_clipboard">В буфере обмена не найдено корректной конфигурации</string>
     <string name="no_proxies_found_in_file">В файле не найдено прокси-серверов</string>
     <string name="no_proxies_found_in_subscription">В подписке не найдено прокси-серверов</string>
     <string name="no_statistics">Статистики пока нет</string>
@@ -319,7 +318,7 @@
     <string name="resolve_destination">Определить адрес назначения</string>
     <string name="resolve_destination_summary">Если адрес назначения является доменом, то он передается в соответствии с правилом IPv6.</string>
     <string name="route_add">Создать маршрут</string>
-    <string name="route_asset_no_update">Обновлений нет</string>
+    <string name="route_asset_no_update">обновлений нет</string>
     <string name="route_asset_status">Локальная версия: %s</string>
     <string name="route_asset_updated">Обновлено</string>
     <string name="route_assets">Ресурсы</string>
@@ -370,7 +369,7 @@
     <string name="sni">Server Name Indication (SNI)</string>
     <string name="sniff_routing">перехватывать для маршрутизации</string>
     <string name="speed">%s/с</string>
-    <string name="speed_detail">"Прокси ：%1$s↑ %2$s↓ 
+    <string name="speed_detail">"Прокси ：%1$s↑ %2$s↓
     Прямой ：%3$s↑%4$s↓"</string>
     <string name="speed_interval">Интервал обновления уведомлений о скорости</string>
     <string name="ss_cat">Настройки Shadowsocks</string>
@@ -387,7 +386,7 @@
     <string name="stun_test">Обнаружение поведения NAT</string>
     <string name="stun_test_summary">Определить поведение сопоставления адресов NAT и поведение фильтрации NAT в соответствии с RFC 5780 при помощи STUN.</string>
     <string name="subscription">Подписка</string>
-    <string name="subscription_import">Импортировать подписку</string>
+    <string name="subscription_import">Вы хотите добавить подписку?</string>
     <string name="subscription_import_message">Подтвердите, что хотите импортировать подписку %s? Если вы импортируете из ненадежного источника, это может привести к утечке вашего IP-адреса и такого поведения.</string>
     <string name="subscription_settings">Настройки подписки</string>
     <string name="subscription_traffic" formatted="false">%s Использовано / %s Осталось</string>
