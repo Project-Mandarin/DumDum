@@ -1,0 +1,4 @@
+- improve buttons styling for Apps VPN mode
+- improve translations
+- show the F-Droid page when tapping the version number on the About page
+- under the hood optimizations

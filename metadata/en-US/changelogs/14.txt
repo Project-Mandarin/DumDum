@@ -1,3 +1,2 @@
-1.1.5
 - remove Clash API support
 - remove the executableSo directory
