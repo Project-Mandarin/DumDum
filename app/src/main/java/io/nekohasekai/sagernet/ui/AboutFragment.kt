@@ -56,7 +56,7 @@ class AboutFragment : ToolbarFragment(R.layout.layout_about) {
                         .subText(versionName + System.lineSeparator() + Libcore.versionBox().lines().first())
                         .setOnClickAction {
                             requireContext().launchCustomTab(
-                                "https://github.com/Project-Mandarin/DumDum/releases"
+                                "https://f-droid.org/en/packages/app.dumdum/"
                             )
                         }
                         .build())
