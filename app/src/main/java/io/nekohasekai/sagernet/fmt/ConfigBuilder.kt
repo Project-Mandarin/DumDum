@@ -226,6 +226,12 @@ fun buildConfig(
                 domain_strategy = genDomainStrategy(DataStore.resolveDestination)
                 sniff = needSniff
                 sniff_override_destination = needSniffOverride
+                users = listOf(
+                    User().apply {
+                        username = DataStore.mixedUsername
+                        password = DataStore.mixedPassword
+                    },
+                )
             })
         }
 

@@ -188,4 +188,12 @@ object Util {
         }
         return ""
     }
+
+    fun generateCryptoSecurePassword(length: Int = 10): String {
+        val chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()"
+        val secureRandom = java.security.SecureRandom()
+        return (1..length)
+            .map { chars[secureRandom.nextInt(chars.length)] }
+            .joinToString("")
+    }
 }
